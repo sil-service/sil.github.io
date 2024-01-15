@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Services Engineer Page</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #efe3e3;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+            header img {
+                max-width: 200px;
+                height: auto;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .form-group input[type="text"],
+            .form-group textarea,
+            .form-group select {
+                width: calc(100% - 22px);
+                padding: 10px;
+                border-radius: 4px;
+                border: 1px solid #b29393;
+                margin-top: 5px;
+            }
+
+            .form-group select {
+                appearance: none;
+                -webkit-appearance: none;
+                background: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>') no-repeat right 10px center/12px auto;
+            }
+
+            .form-group .button {
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: rgb(14, 9, 9);
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+ 
+        #message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .mandatory::after {
+            content: '*';
+            color: red;
+        }
+        #Area option {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <img src="./sil.png" alt="Company Logo">
+        </header>
+        <Center><h2>Daily Work Report</h2></Center>
+                <form method="POST" action="https://script.google.com/macros/s/AKfycbweeLYyFaVvOc6FqGJXH0yci6AFxkNY18LGZ6f-S_jMGJn1FZzjkaUioln_5jPHSUEX/exec">  
+                    <!-- <form method="POST" action="https://script.google.com/macros/s/AKfycbyVyiIR_A2DhoE2e3IZ61_BUMTg2-eSj5mdgsdUDGvgYKBg7r0UP_-rvypjXVYsTz5WLw/exec"> -->
+               <div class="form-group">
+                <label for="Engineer Name">Engineer Name<span class="mandatory"></span>:</label>
+                <input type="text" id="Engineer Name" name="Engineer Name" required>
+            </div>
+            <div class="form-group">
+                <label for="Company Name">Company Name<span class="mandatory"></span>:</label>
+                <input type="text" id="Company Name" name="Company Name" required>
+            </div>
+            <div class="form-group">
+                <label for="Select Machine Type">Select Machine Type<span class="mandatory"></span>:</label>
+                <select id="Select Machine Type" name="Select Machine Type" onchange="showMachineCodeInput()" required>
+                    <option value="">Select Machine Type</option>
+                    <option value="Marking Machine">Marking Machine</option>
+                    <option value="Laser Cutting">Laser Cutting</option>
+                    <option value="2 Chuk tube Cutting">2 Chuk tube Cutting</option>
+                    <option value="3 Chuk tube Cutting">3 Chuk tube Cutting</option>
+                    <option value="Linear Motor Machine">Linear Motor Machine</option>
+                    <option value="Fanuc sheet Cutting">Fanuc sheet Cutting</option>
+                    <option value="Backhoff sheet Cutting">Backhoff sheet Cutting</option>
+                    <option value="Ecat sheet Cutting">Ecat sheet Cutting</option>
+                    <option value="Combo Machine">Combo Machine</option>
+                    <option value="SPM">SPM</option>
+                    <option value="Welding Machine">Welding Machine</option>
+                    <option value="Other">Other</option>
+                    <!-- Add more machine types as needed -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ReportDate">Report Date<span class="mandatory"></span>:</label>
+                <input type="date" id="ReportDate" name="ReportDate" readonly>
+            </div>
+            <div class="form-group">
+                <label for="In-Time">In Time<span class="mandatory">*</span>:</label>
+                <input type="time" id="In-Time" name="In-Time" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="Out-Time">Out Time<span class="mandatory">*</span>:</label>
+                <input type="time" id="Out-Time" name="Out-Time" required>
+            </div>
+            
+           
+           
+            <div class="form-group">
+                <label for="Work Activity">Work Activity<span class="mandatory"></span>:</label>
+                <textarea id="Work Activity" name="Work Activity" rows="4" required></textarea>
+            </div>
+           
+            <div class="form-group">
+                <label for="Status">Result<span class="mandatory"></span>:</label>
+                <select id="Status" name="Status" required>
+                    <option value="">Select Status</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                    <option value="On Hold">On Hold</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+                <input type="hidden" id="TokenNumber" name="Token Number">
+            </div>
+          
+            <div class="form-group">
+                <label for="Customer Name Seal & Sign">Customer Name Seal & Sign:</label>
+                <textarea id="Customer Name Seal & Sign" name="Customer Name Seal & Sign" rows="4" ></textarea>
+            </div>
+            <div style="text-align: center;">
+                <button type="submit" id="submitButton" style="color: #ffffff; background-color: #4CAF50; padding: 10px 20px; font-size: 16px; float: left;">
+                    Submit
+                </button>
+                <a href="./select.html" id="dashboardLink" style="color: #ffffff; background-color: #d9534f; padding: 10px 20px; font-size: 16px; text-decoration: none; margin-left: 10px; float: right;">
+                    Go To Dashboard
+                </a>
+                <div style="clear: both;"></div> <!-- Add a clearing element to prevent content overlap -->
+            
+                <script>
+                    document.getElementById('submitButton').addEventListener('click', function (event) {
+                        // Ask for permission before submitting
+                        if (!confirm('Are you sure you want to submit?')) {
+                            event.preventDefault(); // Prevent the default submit action if the user declines
+                        }
+                    });
+            
+                    document.getElementById('dashboardLink').addEventListener('click', function (event) {
+                        // Ask for permission before navigating to the dashboard
+                        if (!confirm('Are you sure you want to go to the dashboard?')) {
+                            event.preventDefault(); // Prevent the default link action if the user declines
+                        }
+                    });
+                </script>
+            </div>
+
+        </form>
+    </div>
+ 
+    <script>
+        // Set today's date as the default value for the date input
+        document.getElementById('ReportDate').valueAsDate = new Date();
+        
+        function showMachineCodeInput() {
+        var selectedMachineType = document.getElementById("MachineType").value; // machine types select here
+        var machineCodeInput = document.getElementById("machineCodeInput");
+
+        if (selectedMachineType !== "") {
+            machineCodeInput.style.display = "block";
+        } else {
+            machineCodeInput.style.display = "none";
+        }
+    }
+  
+    </script>
+
+
+</body>
+</html>
+

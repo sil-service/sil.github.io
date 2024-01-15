@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Machine Installation/Commissioning Report</title>
+  <link rel="stylesheet" type="text/css" href="./installation.css">
+  </head>
+<body>
+<div class="container">
+  <center><img src="./sil.png" alt="Company Logo"></center>
+  
+  <h1>Machine Installation/Commissioning Report</h1>
+      <form id="report-form" onsubmit="submitForm(event)"  action="https://script.google.com/macros/s/AKfycbyKvwmeuoZHk7VVFXIAP_ODGMpBU2m7gwOyXoDbXtvISxXiZgPfsDJNNVrkBWgXAdrCpw/exec" >
+  
+    <div class="report-details">
+               <table>
+          <tr>
+            <td><label for="customer-name"> Customer Name:</label></td>
+            <td><input type="text" placeholder="Enter Customer Name" id="customer-name" name="customer-name" required required size="40" ></td>
+            <td><label for="contact-person">Contact Person:</label></td>
+            <td><input type="text" placeholder="Enter Contact Person" id="contact-person" name="contact-person" required required size="40"></td>
+          </tr>
+          <tr>
+            <td><label for="Start-date">Start Date:</label></td>
+            <td><input type="date" id="Start-date" name="Start-date" required required size="40"></td>
+            <td><label for="End-date">End Date:</label></td>
+            <td><input type="date" id="End-date" name="End-date" required required size="40"></td>
+          </tr>
+          <tr>              
+            <td><label for="Engineer-Name">Engineer Name:</label></td>
+            <td><input type="text" placeholder="Enter Engineer Name" id="Engineer-Name" name="Engineer-Name" required required size="30"></td>
+            <td><label for="City-Name">City Name:</label></td>
+            <td><input type="text" placeholder="Enter City Name" id="City-Name" name="City-Name" required required size="40"></td>
+          </tr>
+          <tr>
+            <td><label for="machine-model">Machine Model:</label></td>
+            <td><input type="text" placeholder="Enter Machine-Model" id="machine-model" name="machine-model" required required size="40"></td>
+            <td><label for="machine-Serial Number">Machine Serial Number:</label></td>
+            <td><input type="text" placeholder="Enter Serial Number" id="machine-Serial Number" name="machine-Serial Number" required ></td>
+          </tr>
+          <tr>
+            <td colspan="4" style="text-align: center;"><label for="machine-type">Machine Type:</label></td>
+          </tr>
+          <tr>
+            <td colspan="4" style="text-align: center;">
+              <select id="machine-type" name="machine-type" required>
+                <option value="2 Chuk tube Cutting">2 Chuk tube Cutting</option>
+                <option value="3 Chuk tube Cutting">3 Chuk tube Cutting</option>
+                <option value="Linear Motor Machine">Linear Motor Machine</option>
+                <option value="Fanuc sheet Cutting">Fanuc sheet Cutting</option>
+                <option value="Backhoff sheet Cutting">Backhoff sheet Cutting</option>
+                <option value="Ecat sheet Cutting">Ecat sheet Cutting</option>
+                <option value="Combo Machine">Combo Machine</option>
+                <option value="SPM">SPM</option>
+                <option value="Other">Other</option>
+                <!-- Add more options as needed -->
+              </select>
+              
+            </td>
+          </tr>
+        </table>
+        <br>
+      </div>
+      <div class="report-table">
+        <table id="thickness-table">
+          <thead>
+            <tr>
+              <th>Cutting Material</th>
+              <th>Thickness (mm)</th>
+              <th>Result</th>
+              <th>Remark</th>
+            </tr>
+          </thead>
+          <tbody id="thickness-table-body">
+            <!-- Default row without trials column -->
+            <tr>
+              <td>
+                <select name="material-1">
+                  <option value="Mild Steel">Mild Steel</option>
+                  <option value="stainless Steel">Stainless Steel</option>
+                  <option value="Aluminum">Aluminum</option>                
+                  <option value="Titanium">Titanium</option>
+                  <option value="Galvanized">Galvanized</option>
+                  <option value="Copper">Copper</option>
+                  <option value="Brass">Brass</option>
+                  <!-- Add more options as needed -->
+                </select>
+              </td>
+              <td><input type="text" name="thickness-1" placeholder="Enter Thickness"> mm</td>
+              <td>
+                <select name="result-1">
+                  <option value="OK">OK</option>
+                  <option value="Not OK">Not OK</option>
+                  <!-- Add more options as needed -->
+                </select>
+              </td>
+              <td><input type="text" name="remark-1" placeholder="Enter Remark"></td>
+            </tr>
+          </tbody>
+        </table><br>
+        <button type="button" onclick="addRow()">Add Thickness</button>
+      </div>
+      
+    <!-- Second table for Machine Details Form -->
+    <table>
+      <!-- Machine Details Form content from the second snippet -->
+      <!-- ... (existing table content) ... -->
+      <div class="table">
+        <div class="row header">
+          <div class="cell">Machine Function</div>
+          <div class="cell">WORKING</div>
+          <div class="cell">Remark (Model No. - Serial No.)</div>
+          </div>
+        <div class="row">
+          <div class="cell">XYZ_axis</div>
+          <div class="cell"><input type="text" name="xyz_axis" placeholder="Enter working status"></div>
+          <div class="cell"><input type="text" name="xyz_axis"placeholder="Enter remark"></div>
+        </div>
+        <div class="row">
+          <div class="cell">Pallet_Changer</div>
+          <div class="cell"><input type="text" name="pallet_changer" placeholder="Enter working status"></div>
+          <div class="cell"><input type="text" name="pallet_changer"placeholder="Enter remark"></div>
+        </div>
+        <div class="row">
+          <div class="cell">CNC</div>
+          <div class="cell"><input type="text" name="CNC" placeholder="Enter working status"></div>
+          <div class="cell"><input type="text" name="CNC"placeholder="Enter remark"></div>
+        </div>
+        <div class="row">
+          <div class="cell">Laser</div>
+          <div class="cell">
+              <input type="text" name="Laser" placeholder="Enter working status">
+          </div>
+          <div class="cell">
+              <input type="text" name="Laser_remark_model" placeholder="Model No.">
+              <input type="text" name="Laser_remark_serial" placeholder="Serial No.">
+          </div>
+      </div>
+        <div class="row">
+          <div class="cell">Chiller</div>
+          <div class="cell"><input type="text" name="Chiller" placeholder="Enter working status">
+          </div>
+          <div class="cell">
+            <input type="text" name="Chiller"placeholder="Model No.">
+            <input type="text" name="Chiller"placeholder="Serial No."></div>
+        </div>
+        <div class="row">
+          <div class="cell">Cutting_Head</div>
+          <div class="cell"><input type="text" name="Cutting_Head" placeholder="Enter working status"></div>
+          <div class="cell">
+            <input type="text" name="Cutting_Head"placeholder="Model No.">
+            <input type="text" name="Chiller"placeholder="Serial No."></div>
+        </div>
+        <div class="row">
+          <div class="cell">Dust Collector</div>
+          <div class="cell"><input type="text" name="Dust Collector" placeholder="Enter working status"></div>
+          <div class="cell">
+            <input type="text" name="Dust Collector"placeholder="Model No.">
+            <input type="text" name="Dust Collector"placeholder="Serial No."></div>
+        </div>
+        <div class="row">
+          <div class="cell">Slat Conveyer</div>
+          <div class="cell"><input type="text" name="Slat Conveyer" placeholder="Enter working status"></div>
+          <div class="cell"><input type="text" name="Slat Conveyer"placeholder="Enter remark"></div>
+        </div>
+        <div class="row">
+          <div class="cell">Panel AC</div>
+          <div class="cell"><input type="text" name="Panel AC" placeholder="Enter working status"></div>
+          <div class="cell"><input type="text" name="Panel AC"placeholder="Enter remark"></div>
+        </div>
+        <div class="row">
+          <div class="cell">Lubrication System</div>
+          <div class="cell"><input type="text" name="Lubrication System" placeholder="Enter working status"></div>
+          <div class="cell"><input type="text" name="Lubrication System"placeholder="Enter remark"></div>
+        </div>
+        <div class="row">
+          <div class="cell">Exhaust System</div>
+          <div class="cell"><input type="text" name="Exhaust System" placeholder="Enter working status"></div>
+          <div class="cell"><input type="text" name="Exhaust System"placeholder="Enter remark"></div>
+        </div>
+        <div class="row">
+          <div class="cell">Tool Kit</div>
+          <div class="cell"><input type="text" name="Toll Kit" placeholder="Enter working status"></div>
+          <div class="cell"><input type="text" name="Toll Kit"placeholder="Enter remark"></div>
+        </div> 
+        <!-- Add more rows as needed -->
+      </tbody>
+      </table>
+    <br>
+       <!-- Power Supply Details Form -->
+       <div class="table">
+        <div class="row header">
+          <div class="cell">Power Supply<span class="mandatory"></span>*</div>
+          <div class="cell">Standard value<span class="mandatory"></span>*</div>
+          <div class="cell">Actual Readings<span class="mandatory"></span>*</div>
+          <div class="cell">Remarks<span class="mandatory"></span>*</div>
+        </div>
+        <div class="row">
+          <div class="cell">Phase to Phase<span class="mandatory"></span>*</div>
+          <div class="cell">400/415VAC<span class="mandatory"></span>*</div>
+          <div class="cell"><input type="text" name="phaseToPhase" placeholder="Actual Readings*" required></div>
+          <div class="cell"><input type="text" name="phaseToPhase" placeholder="Enter remark*" required></div>
+        </div>
+        <div class="row">
+          <div class="cell">Phase to Neutral<span class="mandatory"></span>*</div>
+          <div class="cell">220/240VAC<span class="mandatory"></span>*</div>
+          <div class="cell"><input type="text" name="phaseToNeutral" placeholder="Actual Readings*" required></div>
+          <div class="cell"><input type="text" name="phaseToNeutral" placeholder="Enter remark*" required></div>
+        </div>
+        <div class="row">
+          <div class="cell">Phase to Earth<span class="mandatory"></span>*</div>
+          <div class="cell">220/240VAC<span class="mandatory"></span>*</div>
+          <div class="cell"><input type="text" name="phaseToEarth" placeholder="Actual Readings*" required></div>
+          <div class="cell"><input type="text" name="phaseToEarth" placeholder="Enter remark*" required></div>
+        </div>
+        <div class="row">
+          <div class="cell">Neutral to Earth<span class="mandatory"></span>*</div>
+          <div class="cell">Less than 1 Volts<span class="mandatory"></span>*</div>
+          <div class="cell"><input type="text" name="neutralToEarth" placeholder="Actual Readings*" required></div>
+          <div class="cell"><input type="text" name="neutralToEarth" placeholder="Enter remark*" required></div>
+        </div>
+        <div class="row">
+          <div class="cell">Earth Resistance<span class="mandatory"></span>*</div>
+          <div class="cell">Less than 3 ohms<span class="mandatory"></span>*</div>
+          <div class="cell"><input type="text" name="earthResistance" placeholder="Actual Readings*" required></div>
+          <div class="cell"><input type="text" name="earthResistance" placeholder="Enter remark*" required></div>
+        </div>
+      </div>
+            
+    
+<table>
+    <tr>
+      <th>General Capabilities</th>
+      <th>Options</th>
+      <th>Remarks</th>
+    </tr>
+    <tr>
+      <td>Max Cutting Length</td>
+      <td>As per Machine bed size</td>
+      <td><input type="text" name="As per Machine bed size"placeholder="Enter remark"></td>
+    </tr>
+    <tr>
+      <td>Max Cutting Width</td>
+      <td>As per Machine bed size</td>
+      <td><input type="text" name="As per Machine bed size"placeholder="Enter remark"></td>
+    </tr>
+    <tr>
+      <td>Cutting Tolerance</td>
+      <td>± 0.1 mm</td>
+      <td><input type="text" name="Cutting Tolerance"placeholder="Enter remark"></td>
+    </tr>
+    <!-- <tr>
+      <td>Positioning Accuracy</td>
+        <td>0.1 mm (MAX)</td>
+      <td><input type="text" name="Positioning Accuracy"placeholder="Enter remark"></td>
+    </tr> -->
+    <tr>
+      <td>Repeatability</td>      
+      <td>0.05 mm (MAX)</td>
+      <td><input type="text" name="Repeatability"placeholder="Enter remark"></td>
+    </tr>
+    <tr>
+      <td>Circular Accuracy</td>      
+      <td>Within 0.1mm</td>
+      <td><input type="text" name="Curcular Accuracy"placeholder="Enter remark"></td>
+    </tr>
+    <tr>
+      <td>Diagonal</td>
+      <td>0.5mm (1500x3000mm)</td>
+      <td><input type="text" name="Diagonal"placeholder="Enter remark"></td>
+    </tr>
+      </div>
+      <div class="row">
+        <!-- Power Supply Details content from the third snippet -->
+        <!-- ... (existing table row content) ... -->
+      </div>
+    </div>
+    <br>
+     <!-- Machine Specifications Table -->
+    <!-- <h2>Machine Specifications</h2> -->
+    <table>
+    <table>
+  <tr>
+    <th>Parameter</th>
+    <th>Range/Description</th>
+    <th>Remark</th>
+  </tr>
+  <tr>
+    <td>Chiller Temperature</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>a) Laser Source cooling water Temp</td>
+    <td>22-25</td>
+    <td><input type="text" name="laser_temp_remark" placeholder="Enter remark"></td>
+  </tr>
+  <tr>
+    <td>b) Cutting Head Cooling water Temp</td>
+    <td>28-32</td>
+    <td><input type="text" name="cutting_head_temp_remark" placeholder="Enter remark"></td>
+  </tr>
+  <tr>
+    <td>c)Chiller Temperature Alarm</td>
+    <td>20 Min, 35 Max</td>
+    <td><input type="text" name="Temperature Alarm" placeholder="Enter remark"></td>
+  </tr>
+  <tr>
+    <td>File Format</td>
+    <td>DXF/NC/CNC File</td>
+    <td><input type="text" name="cutting_head_temp_remark" placeholder="Enter remark"></td>
+  </tr>
+  <tr>
+    <td>Safety Interlock</td>
+    <td></td>
+    <td><input type="text" name="Safety Interlock" placeholder="Enter remark"></td>
+  </tr>
+    <tr>
+    <td>- Head Temp. Interlock</td>
+    <td></td>
+    <td><input type="text" name="Head Temp. Interlock" placeholder="Enter remark"></td>
+  </tr>
+  <tr>
+    <td>- Chiller Interlock</td>
+    <td></td>
+    <td><input type="text" name="Chiller Interlock" placeholder="Enter remark"></td>
+  </tr>
+  <tr>
+    <td>- Cutting Gas Interlock</td>
+    <td></td>
+    <td><input type="text" name="Cutting Gas Interlock" placeholder="Enter remark"></td>
+  </tr>
+  <!-- ... (other rows) ... -->
+  
+</table><br>
+<button type="button" onclick="addOtherRow()" style="padding: 10px 20px; background-color: #3498db; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Add Other</button>
+
+<table id="other-table">
+  <!-- Existing table content -->
+</table>
+
+<table>
+  
+    <td>Engineer Sign:</td>
+    <td><input type="text" name="engineer_sign" ></td>
+  </tr>
+  <tr>
+    <td>Contact Person Sign:</td>
+    <td><input type="text" name="contact_person_sign" ></td>
+  </tr>
+     <td>Contact Person Comment:</td>
+    <td colspan="2"><textarea name="comments"  rows="10" cols="90"></textarea></td>
+  </tr>
+</table>
+
+      <!-- Additional Machine Specifications table content from the fifth snippet -->
+      <!-- ... (existing table content) ... -->
+    </table>
+
+    <!-- Submit button for the entire form -->
+    <br>
+    <!-- <div class="file-upload">
+      <label for="attachment">Upload Document:</label>
+      <input type="file" id="attachment" name="attachment"><br><br> -->
+       <input type="submit" value="Submit" class="submit-btn print-hide">
+       <button type="button" onclick="goToDashboard()" class="dashboard-btn">Go to Dashboard</button>
+    <!-- </div>
+     -->
+     <!-- <script src="D:\NITIN SIL\Sil_Service_Form\service engineer\Engineer logins\Installation Report/Installation.js"></script> -->
+     <script>
+    // Function to handle form submission
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+      // Prevent the default form submission
+      event.preventDefault();
+      
+      // Perform any form processing if needed
+
+      // Redirect to the dashboard
+      window.location.href = './select.html';
+    });
+
+    // Function to handle going to the dashboard without form submission
+    function goToDashboard() {
+      window.location.href = './select.html';
+    }
+  </script>
+
+    <script>
+      function addOtherRow() {
+  // Get the table where new rows will be added
+  var otherTable = document.getElementById("other-table");
+
+  // Create a new table row
+  var newRow = document.createElement("tr");
+
+  // Create table data for description input
+  var descriptionCell = document.createElement("td");
+  var descriptionInput = document.createElement("input");
+  descriptionInput.type = "text";
+  descriptionInput.name = "description"; // Assign a unique name if needed
+  descriptionInput.placeholder = "Enter Description";
+  descriptionCell.appendChild(descriptionInput);
+
+  // Create table data for remark input
+  var remarkCell = document.createElement("td");
+  var remarkInput = document.createElement("input");
+  remarkInput.type = "text";
+  remarkInput.name = "remark"; // Assign a unique name if needed
+  remarkInput.placeholder = "Enter Remark";
+  remarkCell.appendChild(remarkInput);
+
+  // Append cells to the new row
+  newRow.appendChild(descriptionCell);
+  newRow.appendChild(remarkCell);
+
+  // Append the new row to the table
+  otherTable.appendChild(newRow);
+}
+
+    </script>
+     <script>
+      function submitForm(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+    
+        // Collect form data (you can use FormData or any method you prefer)
+        let formData = new FormData(document.getElementById('report-form'));
+    
+        // Example: Sending form data via fetch to a Google Apps Script
+        fetch('https://script.google.com/macros/s/AKfycbyKvwmeuoZHk7VVFXIAP_ODGMpBU2m7gwOyXoDbXtvISxXiZgPfsDJNNVrkBWgXAdrCpw/exec', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          // Handle the response from the server if needed
+          console.log('Form submitted successfully!', response);
+    
+          // After the form submission logic, initiate the print
+          window.print();
+        })
+        .catch(error => {
+          console.error('Error submitting form:', error);
+        });
+      }
+
+    </script>
+<script>
+  function addRow() {
+  // Get the table body where new rows will be added
+  var tableBody = document.getElementById("thickness-table-body");
+
+  // Create a new table row
+  var newRow = document.createElement("tr");
+
+  // Create table data for material select
+  var materialCell = document.createElement("td");
+  var materialSelect = document.createElement("select");
+  materialSelect.name = "material"; // Update this to assign a unique name if needed
+
+  // Add options to the material select
+  var materials = ["Mild Steel", "Stainless Steel", "Aluminum","Titanium","Galvanized","Copper","Brass"]; // Add more materials as needed
+  materials.forEach(function(material) {
+    var option = document.createElement("option");
+    option.value = material;
+    option.text = material;
+    materialSelect.appendChild(option);
+  });
+
+  // Append material select to table cell
+  materialCell.appendChild(materialSelect);
+
+  // Create table data for thickness input
+  var thicknessCell = document.createElement("td");
+  var thicknessInput = document.createElement("input");
+  thicknessInput.type = "text";
+  thicknessInput.name = "thickness"; // Update this to assign a unique name if needed
+  thicknessInput.placeholder = "Enter Thickness";
+  var unit = document.createTextNode(" mm");
+  thicknessCell.appendChild(thicknessInput);
+  thicknessCell.appendChild(unit);
+
+  // Create table data for result select
+  var resultCell = document.createElement("td");
+  var resultSelect = document.createElement("select");
+  resultSelect.name = "result"; // Update this to assign a unique name if needed
+
+  // Add options to the result select
+  var results = ["OK", "Not OK"]; // Add more results as needed
+  results.forEach(function(result) {
+    var option = document.createElement("option");
+    option.value = result;
+    option.text = result;
+    resultSelect.appendChild(option);
+  });
+
+  // Append result select to table cell
+  resultCell.appendChild(resultSelect);
+
+  // Create table data for remark input
+  var remarkCell = document.createElement("td");
+  var remarkInput = document.createElement("input");
+  remarkInput.type = "text";
+  remarkInput.name = "remark"; // Update this to assign a unique name if needed
+  remarkInput.placeholder = "Enter Remark";
+  remarkCell.appendChild(remarkInput);
+
+  // Append all cells to the new row
+  newRow.appendChild(materialCell);
+  newRow.appendChild(thicknessCell);
+  newRow.appendChild(resultCell);
+  newRow.appendChild(remarkCell);
+
+  // Append the new row to the table body
+  tableBody.appendChild(newRow);
+}
+// Function to handle form submission and print
+function handleFormSubmission(event) {
+  event.preventDefault();
+
+  // Your code for form submission goes here
+  // For example, you can use AJAX to send form data to the specified endpoint
+
+  // After successful submission, trigger printing
+  window.print();
+}
+
+// Listen for the form submission
+document.getElementById('report-form').addEventListener('submit', handleFormSubmission);
+
+</script>
+<style>
+  /* Your existing CSS */
+
+  /* Hide elements with class 'print-hide' when printing */
+  @media print {
+    .print-hide {
+      display: none !important;
+    }
+  }
+</style>
+
+  </body>
+</html>
