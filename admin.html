@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -86,6 +86,98 @@
     function forgotUsername() {
       alert('Please contact the administrator to retrieve your username.');
       // You can add logic here to redirect to a username retrieval page or take other actions
+    }
+  </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #a73c3c;
+    }
+    .login-container {
+      display: flex;
+      background-color: rgb(225, 233, 233);
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+      background-color: rgba(7, 100, 137, 0.171);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    input[type="text"],
+    input[type="password"],
+    button {
+      width: 50%;
+      padding: 7px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid pink;
+    }
+    button {
+      background-color: #95a1ad;
+      color: rgb(24, 22, 22);
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #66798d;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container"> 
+    <div class="login-box">
+      <div>
+        <img src="./sil.png" alt="logo">
+      </div>
+      <h2>Login</h2>
+      <form id="loginForm" action="./report admin.html" onsubmit="return validateLogin()">
+        <input id="username" type="text" placeholder="username" required>
+        <input id="password" type="password" placeholder="password" required>
+        <button type="submit">Login</button>
+      </form>
+      <button onclick="goBack()">Back</button>
+      <div>
+        <a href="#" onclick="forgotPassword()">Forgot Password?</a>
+        <br>
+        <a href="#" onclick="forgotUsername()">Forgot Username?</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function validateLogin() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (username !== 'sil' || password !== 'sil') {
+        alert('Invalid username or password');
+        return false;
+      }
+      return true;
+    }
+
+    function forgotPassword() {
+      alert('Please contact the administrator to reset your password.');
+    }
+
+    function forgotUsername() {
+      alert('Please contact the administrator to retrieve your username.');
+    }
+
+    function goBack() {
+      window.history.back();
     }
   </script>
 </body>

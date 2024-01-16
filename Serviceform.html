@@ -95,8 +95,8 @@
             <img src="./sil.png" alt="Company Logo">
         </header>
         <Center><h2>Services Report</h2></Center>
-                <!-- <form method="POST" action="https://script.google.com/macros/s/AKfycbxTTjSV276lXXYzcHW0E_yh6k1Dx3Rzr7FBOjmJXhajj4FoGWjXfccURBnGfXSpsXmh/exec">   -->
-                 <form method="POST" action="https://script.google.com/macros/s/AKfycbxAU38HwQvxaKniqWQlL9gQC5bW1Pm1TJqElsqR03D1BXe0DNaISMiF7sQdNzoPRLPapA/exec">  
+                <!-- <form method="POST" action="https://script.google.com/macros/s/AKfycbwEDVr-uYak-tMseYSXuyEn1SB2C5r2xAsyeo64n8kxuGJZajDllFFuxEJpVag6cAo/exec">   -->
+                 <form method="POST" action="https://script.google.com/macros/s/AKfycbxmHTsg8e0u01mfwXxaGUFRuJ1OEO9EUxHO5Yinl-yoVAOWI7AjtfmrvLBmfW63ndm6AQ/exec">  
                <div class="form-group">
                 <label for="Engineer Name">Engineer Name<span class="mandatory"></span>:</label>
                 <input type="text" id="Engineer Name" name="Engineer Name" required>
@@ -125,18 +125,38 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="Select Service Type">Select Service Type<span class="mandatory"></span>:</label>
-                <select id="Select Service Type" name="Select Service Type" onchange="showServiceCodeInput()" required>
+                <label for="SelectServiceType">Select Service Type<span class="mandatory"></span>:</label>
+                <select id="SelectServiceType" name="SelectServiceType" onchange="showServiceCodeInput()" required>
                     <option value="">Select Service Type</option>
-                    <option value="In warrenty">In warrenty</option>
-                    <option value="Out of Warrenty">Out of Warrenty</option>
+                    <option value="In warranty">In warranty</option>
+                    <option value="Out of Warrenty">Out of Warranty(Paid Service)</option>
+                    <option value="Out of Warrenty">Out of Warranty(Free of Cost)</option>
                     <option value="AMC">AMC</option>
                     <option value="Preventive Maintainance Visit">Preventive Maintainance Visit</option>
-                    
                     <option value="Other">Other</option>
-                    <!-- Add more machine types as needed -->
                 </select>
             </div>
+            
+            <!-- <div id="otherDetails" style="display:none;" class="form-group">
+                <label for="OtherDetails">Other Details:</label>
+                <input type="text" id="OtherDetails" name="OtherDetails" placeholder="Enter other details">
+            </div>
+            
+            <script>
+                function showServiceCodeInput() {
+                    var selectBox = document.getElementById("SelectServiceType");
+                    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            
+                    var otherDetailsDiv = document.getElementById("otherDetails");
+            
+                    if (selectedValue === "Other") {
+                        otherDetailsDiv.style.display = "block";
+                    } else {
+                        otherDetailsDiv.style.display = "none";
+                    }
+                }
+            </script> -->
+            
             <div class="form-group">
                 <label for="Machine Serial Number">Machine Serial Number<span class="mandatory">*</span>:</label>
                 <input type="text" id="Machine Serial Number" name="Machine Serial Number" required>
@@ -162,6 +182,8 @@
                     <option value="CHILLER">CHILLER</option>
                     <option value="EXHAUST SUCTION">EXHAUST SUCTION</option>
                     <option value="NESTING SOFTWARE">NESTING SOFTWARE</option>
+                    <option value="CUTTING APPLICATIONS">CUTTING APPLICATIONS</option>
+                    <OPtion value="OTHER TYPE ISSUES">OTHER TYPE ISSUES</OPtion>
                 </select>
 					<input type="hidden" id="Area" name="Area"/>
                 <div id="machineProblems" style="display: none;">
@@ -283,6 +305,12 @@
                 <label><input type="checkbox" onchange="selectProblem(event)" value="NC FILE WRONG STRUCTURE">NC FILE WRONG STRUCTURE</label><br>
                 <label><input type="checkbox" onchange="selectProblem(event)" value="OTHERS">OTHERS</label><br>
             </div>
+            <div id="CuttingApplicationsProblems" style="display: none;">
+            <label><input type="checkbox" onchange="selectProblem(event)" value="OTHERS">OTHERS</label><br>
+            </div>
+            <div id="OtherTypeIssuesProblems" style="display: none;">
+                <label><input type="checkbox" onchange="selectProblem(event)" value="OTHERS">OTHERS</label><br>
+            </div>
 
             <div class="form-group">
                 <label for="Description">Description<span class="mandatory"></span>:</label>
@@ -312,40 +340,33 @@
                 <textarea id="Customer Name Seal & Sign" name="Customer Name Seal & Sign" rows="4" ></textarea>
             </div>
             <div style="text-align: center;">
-                <!-- Add this button/link after the Submit button -->
-<!-- <div style="text-align: center;">
-    <button type="submit" style="color: #ffffff; background-color: #4CAF50; padding: 10px 20px; font-size: 16px;">
-        Submit
-    </button>
-    <a href="./select.html" style="color: #ffffff; background-color: #d9534f; padding: 10px 20px; font-size: 16px; text-decoration: none; margin-left: 10px;">
-        Go To Dashboard
-    </a>
-</div> -->
-<div style="text-align: center;">
-    <button type="submit" id="submitButton" style="color: #ffffff; background-color: #4CAF50; padding: 10px 20px; font-size: 16px; float: left;">
-        Submit
-    </button>
-    <a href="./select.html" id="dashboardLink" style="color: #ffffff; background-color: #d9534f; padding: 10px 20px; font-size: 16px; text-decoration: none; margin-left: 10px; float: right;">
-        Go To Dashboard
-    </a>
-    <div style="clear: both;"></div> <!-- Add a clearing element to prevent content overlap -->
+                <button type="submit" id="submitButton" style="color: #ffffff; background-color: #4CAF50; padding: 10px 20px; font-size: 16px; float: left;">
+                    Submit
+                </button>
+                <a href="./select.html" id="dashboardLink" style="color: #ffffff; background-color: #d9534f; padding: 10px 20px; font-size: 16px; text-decoration: none; margin-left: 10px; float: right;">
+                    Go To Dashboard
+                </a>
+                <div style="clear: both;"></div> <!-- Add a clearing element to prevent content overlap -->
+            
+                <script>
+                    document.getElementById('submitButton').addEventListener('click', function (event) {
+                        // Ask for permission before submitting
+                        if (!confirm('Are you sure you want to submit?')) {
+                            event.preventDefault(); // Prevent the default submit action if the user declines
+                        }
+                    });
+            
+                    document.getElementById('dashboardLink').addEventListener('click', function (event) {
+                        // Ask for permission before navigating to the dashboard
+                        if (!confirm('Are you sure you want to go to the dashboard?')) {
+                            event.preventDefault(); // Prevent the default link action if the user declines
+                        }
+                    });
+                </script>
+            </div>
+            
+                
 
-    <script>
-        document.getElementById('submitButton').addEventListener('click', function (event) {
-            // Ask for permission before submitting
-            if (!confirm('Are you sure you want to submit?')) {
-                event.preventDefault(); // Prevent the default submit action if the user declines
-            }
-        });
-
-        document.getElementById('dashboardLink').addEventListener('click', function (event) {
-            // Ask for permission before navigating to the dashboard
-            if (!confirm('Are you sure you want to go to the dashboard?')) {
-                event.preventDefault(); // Prevent the default link action if the user declines
-            }
-        });
-    </script>
-</div>
 
             </div>
         </form>
@@ -394,6 +415,8 @@
             var ChillerProblems = document.getElementById("ChillerProblems");
             var ExhaustSuctionProblems = document.getElementById("ExhaustSuctionProblems");
             var NestingSoftwareProblems = document.getElementById("NestingSoftwareProblems");
+            var CuttingApplicationsProblems = document.getElementById("CuttingApplicationsProblems");
+            var OtherTypeIssuesProblems = document.getElementById("OtherTypeIssuesProblems");
 			document.getElementById("Area").value="";
             machineProblems.style.display = "none";
             palletsystemProblems.style.display = "none";
@@ -402,7 +425,9 @@
             LaserProblems.style.display = "none";
             ChillerProblems.style.display = "none";
             ExhaustSuctionProblems.style.display = "none";
-            NestingSoftwareProblems.style.display = "none"
+            NestingSoftwareProblems.style.display = "none";
+            CuttingApplicationsProblems.style.display = "none";
+            OtherTypeIssuesProblems.style.display = "none"
 			
             if (selectedOption === "MACHINE") {
                 machineProblems.style.display = "block";  
@@ -426,6 +451,12 @@
             }
             else if (selectedOption === "NESTING SOFTWARE") {
                 NestingSoftwareProblems.style.display = "block";
+            } 
+            else if (selectedOption === "CUTTING APPLICATIONS") {
+                CuttingApplicationsProblems.style.display = "block";
+            } 
+            else if (selectedOption === "OTHER TYPE ISSUES") {
+                OtherTypeIssuesProblems.style.display = "block";
             } 
         }
 		

@@ -1,15 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Dashboard</title>
   <style>
-        body {
+    body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background-color: rgb(209, 215, 226);
-      }
+    }
     .folder-container {
       display: flex;
       justify-content: center;
@@ -22,13 +23,27 @@
       padding: 20px;
       margin: 20px;
       border-radius: 8px;
-      box-shadow: 0 4px 6px lightskyblue(0, 0, 0, 0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       text-decoration: none;
       color: rgb(0, 0, 0);
-     transition: transform 0.3s ease;
+      transition: transform 0.3s ease;
     }
     .folder:hover {
       transform: translateY(-5px);
+    }
+    .logout-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .logout-btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -38,6 +53,28 @@
     <a href="https://drive.google.com/drive/folders/1CkEOKVeY6BJrYolUr7CZShaNAylMLXjA?usp=drive_link" class="folder">Fanuc</a>
     <a href="https://drive.google.com/file/d/1qFfRSFMfP01DFdTxOhuqahMV8H71DzIG/view?usp=drive_link" class="folder">Eathergather</a>
     <a href="https://drive.google.com/file/d/15mxCwVAusKCN-Mug05dyZmUYaezI4GOq/view?usp=drive_link" class="folder">Backhoff</a>
-    </div>
+  </div>
+
+  <div class="logout-container">
+    <button class="logout-btn" onclick="confirmLogout()">Logout</button>
+  </div>
+
+  <!-- Add your login page HTML here (replace the placeholder link) -->
+  <!-- Example: <div id="login-page" style="display: none;"> ... </div> -->
+
+  <script>
+    function confirmLogout() {
+      var confirmLogout = confirm("Are you sure you want to logout?");
+      if (confirmLogout) {
+        // Redirect to your login page or perform necessary logout actions
+        // Example: window.location.href = 'login.html';
+        alert('Logout successful...');
+        window.location.href = './user.html'; // Replace with your actual login page link
+      } else {
+        // Do nothing if the user cancels the logout
+        alert('Logout canceled.');
+      }
+    }
+  </script>
 </body>
 </html>
