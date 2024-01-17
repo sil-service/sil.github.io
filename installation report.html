@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Machine Installation/Commissioning Report</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" type="text/css" href="./installation.css">
   </head>
 <body>
@@ -10,7 +11,7 @@
   <center><img src="./sil.png" alt="Company Logo"></center>
   
   <h1>Machine Installation/Commissioning Report</h1>
-      <form id="report-form" onsubmit="submitForm(event)"  action="https://script.google.com/macros/s/AKfycbyKvwmeuoZHk7VVFXIAP_ODGMpBU2m7gwOyXoDbXtvISxXiZgPfsDJNNVrkBWgXAdrCpw/exec" >
+      <form id="report-form" onsubmit="submitForm(event)"  action="https://script.google.com/macros/s/AKfycbxV2JOxT621Jo8tEnuihXGN8_dYn-MY3AQfqIuLkrOGTN-3kd8gNIC8yn25mzbGCB3EBw/exec" >
   
     <div class="report-details">
                <table>
@@ -250,11 +251,7 @@
       <td>± 0.1 mm</td>
       <td><input type="text" name="Cutting Tolerance"placeholder="Enter remark"></td>
     </tr>
-    <!-- <tr>
-      <td>Positioning Accuracy</td>
-        <td>0.1 mm (MAX)</td>
-      <td><input type="text" name="Positioning Accuracy"placeholder="Enter remark"></td>
-    </tr> -->
+    
     <tr>
       <td>Repeatability</td>      
       <td>0.05 mm (MAX)</td>
@@ -277,7 +274,7 @@
       </div>
     </div>
     <br>
-     <!-- Machine Specifications Table -->
+     
     <!-- <h2>Machine Specifications</h2> -->
     <table>
     <table>
@@ -353,21 +350,15 @@
     <td colspan="2"><textarea name="comments"  rows="10" cols="90"></textarea></td>
   </tr>
 </table>
-
-      <!-- Additional Machine Specifications table content from the fifth snippet -->
-      <!-- ... (existing table content) ... -->
-    </table>
+ 
 
     <!-- Submit button for the entire form -->
     <br>
-    <!-- <div class="file-upload">
-      <label for="attachment">Upload Document:</label>
-      <input type="file" id="attachment" name="attachment"><br><br> -->
-       <input type="submit" value="Submit" class="submit-btn print-hide">
-       <button type="button" onclick="goToDashboard()" class="dashboard-btn">Go to Dashboard</button>
+           <button class="submit-btn"><i class="material-icons">send</i> Submit</button>
+       <button type="button" onclick="goToDashboard()" class="dashboard-btn"><i class="material-icons">dashboard</i> Go to Dashboard</button>
     <!-- </div>
      -->
-     <!-- <script src="D:\NITIN SIL\Sil_Service_Form\service engineer\Engineer logins\Installation Report/Installation.js"></script> -->
+    
      <script>
     // Function to handle form submission
     document.getElementById('myForm').addEventListener('submit', function(event) {
@@ -419,30 +410,56 @@
 }
 
     </script>
-     <script>
-      function submitForm(event) {
-        event.preventDefault(); // Prevent the default form submission behavior
     
-        // Collect form data (you can use FormData or any method you prefer)
-        let formData = new FormData(document.getElementById('report-form'));
-    
-        // Example: Sending form data via fetch to a Google Apps Script
-        fetch('https://script.google.com/macros/s/AKfycbyKvwmeuoZHk7VVFXIAP_ODGMpBU2m7gwOyXoDbXtvISxXiZgPfsDJNNVrkBWgXAdrCpw/exec', {
-          method: 'POST',
-          body: formData
-        })
-        .then(response => {
-          // Handle the response from the server if needed
-          console.log('Form submitted successfully!', response);
-    
-          // After the form submission logic, initiate the print
+      <script>
+        function addOtherRow() {
+          // ... (existing code for adding rows)
+        }
+      
+        function submitForm(event) {
+          event.preventDefault(); // Prevent the default form submission behavior
+      
+          // Display a confirmation dialog
+          if (confirm("Are you sure you want to submit the form?")) {
+            // Collect form data (you can use FormData or any method you prefer)
+            let formData = new FormData(document.getElementById('report-form'));
+      
+            // Example: Sending form data via fetch to a Google Apps Script
+            fetch('https://script.google.com/macros/s/AKfycbxV2JOxT621Jo8tEnuihXGN8_dYn-MY3AQfqIuLkrOGTN-3kd8gNIC8yn25mzbGCB3EBw/exec', {
+              method: 'POST',
+              body: formData
+            })
+              .then(response => {
+                // Handle the response from the server if needed
+                console.log('Form submitted successfully!', response);
+      
+                // After the form submission logic, initiate the print
+                window.print();
+              })
+              .catch(error => {
+                console.error('Error submitting form:', error);
+              });
+          }
+        }
+      
+        function goToDashboard() {
+          // Display a confirmation dialog
+          if (confirm("Are you sure you want to go to the dashboard?")) {
+            window.location.href = './select.html';
+          }
+        }
+      
+        function handleFormSubmission(event) {
+          event.preventDefault();
+      
+          // After successful submission, trigger printing
           window.print();
-        })
-        .catch(error => {
-          console.error('Error submitting form:', error);
-        });
-      }
-
+        }
+      
+        // Listen for the form submission
+        document.getElementById('report-form').addEventListener('submit', handleFormSubmission);
+      </script>
+      
     </script>
 <script>
   function addRow() {
@@ -517,9 +534,6 @@
 function handleFormSubmission(event) {
   event.preventDefault();
 
-  // Your code for form submission goes here
-  // For example, you can use AJAX to send form data to the specified endpoint
-
   // After successful submission, trigger printing
   window.print();
 }
@@ -528,16 +542,7 @@ function handleFormSubmission(event) {
 document.getElementById('report-form').addEventListener('submit', handleFormSubmission);
 
 </script>
-<style>
-  /* Your existing CSS */
 
-  /* Hide elements with class 'print-hide' when printing */
-  @media print {
-    .print-hide {
-      display: none !important;
-    }
-  }
-</style>
 
   </body>
 </html>

@@ -1,183 +1,129 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Login</title>
-  <style>
-  
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #a73c3c;
-    }
-    .login-container {
-      display: flex;
-      background-color: rgb(225, 233, 233);
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .login-box {
-      background-color: rgba(7, 100, 137, 0.171);
-      padding: 40px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-    input[type="text"],
-    input[type="password"],
-    button {
-      width: 50%;
-      padding: 7px;
-      margin-bottom: 15px;
-      border-radius: 4px;
-      border: 1px solid pink;
-    }
-    button {
-      background-color: #95a1ad;
-      color: rgb(24, 22, 22);
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #66798d;
-    }
-  </style>
-
-<body>
-  <div class="login-container"> 
-    <div class="login-box">
-      <div>
-        <img src="./sil.png" alt="logo">
-      </div>
-      <h2>Login</h2>
-      <form id="loginForm" action="./report admin.html" onsubmit="return validateLogin()">
-        <input id="username" type="text" placeholder="username" required>
-        <input id="password" type="password" placeholder="password" required>
-        <button type="submit">Login</button>
-      </form>
-      <div>
-        <a href="#" onclick="forgotPassword()">Forgot Password?</a>
-        <br>
-        <a href="#" onclick="forgotUsername()">Forgot Username?</a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function validateLogin() {
-      // Get entered username and password
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-
-      // Check if username and password match the fixed values
-      if (username !== 'sil' || password !== 'sil') {
-        alert('Invalid username or password');
-        return false; // Prevent form submission
-      }
-      return true; // Allow form submission
-    }
-
-    function forgotPassword() {
-      alert('Please contact the administrator to reset your password.');
-      // You can add logic here to redirect to a password reset page or take other actions
-    }
-
-    function forgotUsername() {
-      alert('Please contact the administrator to retrieve your username.');
-      // You can add logic here to redirect to a username retrieval page or take other actions
-    }
-  </script>
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #a73c3c;
     }
-    .login-container {
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #c9d7d7;
       display: flex;
-      background-color: rgb(225, 233, 233);
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
     }
+
     .login-box {
       background-color: rgba(7, 100, 137, 0.171);
       padding: 40px;
-      border-radius: 8px;
+      border-radius: 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       text-align: center;
+      width: 400px;
     }
-    input[type="text"],
+
+    /* New styles for icon and input container */
+    .input-container {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    input[type="email"],
     input[type="password"],
-    button {
-      width: 50%;
-      padding: 7px;
+    input[type="text"] {
+      flex: 1;
+      width: calc(100% - 24px);
+      padding: 12px;
       margin-bottom: 15px;
-      border-radius: 4px;
-      border: 1px solid pink;
+      border-radius: 8px;
+      border: 1px solid #ff69b4;
+      font-size: 16px;
     }
+
+    .material-icons {
+      margin-right: 5px;
+    }
+
     button {
-      background-color: #95a1ad;
-      color: rgb(24, 22, 22);
+      width: calc(50% - 6px);
+      background-color: #4285f4;
+      color: #fff;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
     }
-    button:hover {
-      background-color: #66798d;
+
+    .back-button {
+      width: calc(50% - 6px);
+      background-color: #6c757d;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button:hover, .back-button:hover {
+      background-color: #1967d2;
     }
   </style>
 </head>
 <body>
-  <div class="login-container"> 
-    <div class="login-box">
-      <div>
-        <img src="./sil.png" alt="logo">
+  <div class="login-box">
+    <div>
+      <img src="./sil.png" alt="logo">
+    </div><br>
+    <h2>Admin Login</h2><br>
+    <form id="loginForm">
+      <div class="input-container">
+        <!-- Container for icon and input -->
+        <i class="material-icons">person</i>
+        <input type="text" id="username" placeholder="Username" required="sil">
       </div>
-      <h2>Login</h2>
-      <form id="loginForm" action="./report admin.html" onsubmit="return validateLogin()">
-        <input id="username" type="text" placeholder="username" required>
-        <input id="password" type="password" placeholder="password" required>
-        <button type="submit">Login</button>
-      </form>
-      <button onclick="goBack()">Back</button>
-      <div>
-        <a href="#" onclick="forgotPassword()">Forgot Password?</a>
-        <br>
-        <a href="#" onclick="forgotUsername()">Forgot Username?</a>
+      <br>
+      <div class="input-container">
+        <!-- Container for icon and input -->
+        <i class="material-icons">lock</i>
+        <input type="password" id="password" placeholder="Password" required>
       </div>
-    </div>
+      <br>
+      <button type="button" onclick="login()">
+        <i class="material-icons">login</i> Login
+      </button>
+      <button class="back-button" onclick="goBack()">
+        <i class="material-icons">arrow_back</i> Back
+      </button>
+    </form>
   </div>
 
   <script>
-    function validateLogin() {
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+    function login() {
+      var username = document.getElementById("username").value.toLowerCase().trim();
+      var password = document.getElementById("password").value.trim();
 
-      if (username !== 'sil' || password !== 'sil') {
-        alert('Invalid username or password');
-        return false;
+      if (username === "sil" && password === "sil") {
+        alert("Login successful!");
+        window.location.href = 'report admin.html?username=' + username;
+      } else { 
+        alert("Invalid username or password. Please try again.");
       }
-      return true;
-    }
-
-    function forgotPassword() {
-      alert('Please contact the administrator to reset your password.');
-    }
-
-    function forgotUsername() {
-      alert('Please contact the administrator to retrieve your username.');
     }
 
     function goBack() {
-      window.history.back();
+      window.location.href = 'index.html';
     }
   </script>
 </body>

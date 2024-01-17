@@ -3,70 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
-  
-    body {
-      font-family: Arial, sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #a73c3c;
     }
-    .login-container {
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #c9d7d7;
       display: flex;
-      background-color: rgb(223, 241, 241);
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
     }
+
     .login-box {
-      background-color: rgb(166, 195, 206);
+      background-color: rgba(7, 100, 137, 0.171);
       padding: 40px;
-      border-radius: 8px;
+      border-radius: 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       text-align: center;
+      width: 400px;
     }
-    input[type="text"],
+
+    /* New styles for icon and input container */
+    .input-container {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    input[type="email"],
     input[type="password"],
-    button {
-      width: 50%;
-      padding: 7px;
+    input[type="text"] {
+      flex: 1;
+      width: calc(100% - 24px);
+      padding: 12px;
       margin-bottom: 15px;
-      border-radius: 4px;
-      border: 1px solid pink;
+      border-radius: 8px;
+      border: 1px solid #ff69b4;
+      font-size: 16px;
     }
+
+    .material-icons {
+      margin-right: 5px;
+    }
+
     button {
-      background-color: #8b8e94;
-      color: rgb(17, 14, 14);
+      width: calc(50% - 6px);
+      background-color: #4285f4;
+      color: #fff;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
     }
-    button:hover {
-      background-color: #0056b3;
+
+    .back-button {
+      width: calc(50% - 6px);
+      background-color: #6c757d;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button:hover, .back-button:hover {
+      background-color: #1967d2;
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-       <div class="login-box">
-      <div>
-        <img src="./sil.png" alt="logo">
-       </div>
-      <h2>Login</h2>
-      <form id="loginForm" action="./dashboard.html">
-        <input type="text" placeholder="username" required="sil">
-        <input type="password" placeholder="password" required="sil">
-        <button type="submit">Login</button>
-        <button class="back-button" onclick="goBack()">Back</button>
-      </form>
-    </div>
+  <div class="login-box">
+    <div>
+      <img src="./sil.png" alt="logo">
+    </div><br>
+    <h2>User Login</h2><br>
+    <form id="loginForm">
+      <div class="input-container">
+        <!-- Container for icon and input -->
+        <i class="material-icons">person</i>
+        <input type="text" id="username" placeholder="Username" required="sil">
+      </div>
+      <br>
+      <div class="input-container">
+        <!-- Container for icon and input -->
+        <i class="material-icons">lock</i>
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+      <br>
+      <button type="button" onclick="login()">
+        <i class="material-icons">login</i> Login
+      </button>
+      <button class="back-button" onclick="goBack()">
+        <i class="material-icons">arrow_back</i> Back
+      </button>
+    </form>
   </div>
-  <script>
-    // function login() {
-    //   // Your existing login function remains unchanged
-    // }
 
-    // Function to navigate back to the index page
+  <script>
+    function login() {
+      var username = document.getElementById("username").value.toLowerCase().trim();
+      var password = document.getElementById("password").value.trim();
+
+      if (username === "sil" && password === "sil") {
+        alert("Login successful!");
+        window.location.href = 'dashboard.html?username=' + username;
+      } else { 
+        alert("Invalid username or password. Please try again.");
+      }
+    }
+
     function goBack() {
-      window.location.href = 'index.html'; // Update the page name accordingly
+      window.location.href = 'index.html';
     }
   </script>
 </body>

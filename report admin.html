@@ -1,93 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Admin Dashboard</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-image: url('../images/.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-    header {
-      background-color: #e7d9d9;
-      color: rgb(255, 255, 255);
-      padding: 20px 0;
-      text-align: center;
-    }
-    h1.welcome {
-      margin: 0;
-      font-size: 28px;
-      color: #120f01;
-    }
-    nav ul {
-      list-style: none;
-      padding: 0;
-      text-align: center;
-    }
-    nav ul li {
-      display: inline;
-      margin: 0 10px;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: rgb(255, 255, 255);
-      padding: 5px 10px;
-      border-radius: 5px;
-      background-color: #555555;
-      transition: background-color 0.3s ease;
-    }
-    nav ul li a:hover {
-      background-color: #777;
-    }
-    .logo {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    /* Blinking animation */
-    @keyframes blink {
-      0%, 100% {
-        color: #fff;
-      }
-      50% {
-        color: #5baae2;
-      }
-    }
-
-    nav ul li a.blink {
-      animation: blink 1s infinite;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1 class="welcome">Welcome To Reports!</h1>
-    <div class="logo">
-      <marquee width="100%" direction="left" height="100px">
-        <div>
-          <img src="./sil.png" alt="Your Logo">
-        </div>
-      </marquee>
-    </div>
-  </header>
-  
-  <main>
-    <nav><br>
-      <ul>
-        <li><a href="https://docs.google.com/spreadsheets/d/1eMAqvEqRSgV1MM7HH4qxt12aKNjqwxHaE2YXm7WLHt0/edit?usp=drive_link" class="blink">Daily Reports</a></li>
-        <li><a href="https://docs.google.com/spreadsheets/d/1eMAqvEqRSgV1MM7HH4qxt12aKNjqwxHaE2YXm7WLHt0/edit?usp=drive_link" class="blink">Service Reports</a></li>
-        <li><a href="https://docs.google.com/spreadsheets/d/1BvLMVYwNYZoyLwNX7reqiSMJ5k91IrhxIySU58JpbCw/edit?usp=drive_link" class="blink">Installation Reports</a></li>
-      </ul>
-    </nav>
-  </main>
-  <script src="adminhome.js"></script>
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,7 +21,8 @@
     }
     h1.welcome {
       margin: 0;
-      font-size: 28px;
+      font-size: 32px; /* Increased font size */
+      font-weight: bold; /* Bold text */
       color: #120f01;
     }
     nav ul {
@@ -121,15 +32,25 @@
     }
     nav ul li {
       display: inline;
-      margin: 0 10px;
+      margin: 0 20px; /* Added spacing between buttons */
     }
     nav ul li a {
       text-decoration: none;
       color: rgb(255, 255, 255);
-      padding: 5px 10px;
+      padding: 15px 30px;
       border-radius: 5px;
-      background-color: #555555;
       transition: background-color 0.3s ease;
+      font-size: 18px; /* Increased font size */
+      font-weight: bold; /* Bold text */
+    }
+    nav ul li:nth-child(1) a {
+      background-color: #777;
+    }
+    nav ul li:nth-child(2) a {
+      background-color: #777;
+    }
+    nav ul li:nth-child(3) a {
+      background-color: #777;
     }
     nav ul li a:hover {
       background-color: #777;
@@ -138,64 +59,50 @@
       text-align: center;
       margin-bottom: 20px;
     }
-
-    /* Blinking animation */
-    @keyframes blink {
-      0%, 100% {
-        color: #fff;
-      }
-      50% {
-        color: #5baae2;
-      }
-    }
-
-    nav ul li a.blink {
-      animation: blink 1s infinite;
-    }
-
-    /* Centered content */
     main {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-
-    /* Logout button style */
     #logoutBtn {
       margin-top: 20px;
-      padding: 10px 20px;
+      padding: 15px 30px;
       text-decoration: none;
       color: #fff;
       border-radius: 5px;
-      background-color: #555555;
+      background-color: #dc1919;
       transition: background-color 0.3s ease;
+      font-size: 18px; /* Increased font size */
+      font-weight: bold; /* Bold text */
     }
-
     #logoutBtn:hover {
-      background-color: #777;
+      background-color: #e71e1e;
     }
-  </style>
+</style>
+
 </head>
 <body>
   <header>
-    <h1 class="welcome">Welcome To Reports!</h1>
+    <h1 class="welcome" style="font-size: 40px;">Welcome To Reports!</h1>
+
     <div class="logo">
-      <marquee width="100%" direction="left" height="100px">
+      <!-- <marquee width="100%" direction="left" height="300px"> -->
         <div>
-          <img src="./sil.png" alt="Your Logo">
+          <img src="./sil.png" alt="Your Logo" style="height: 100px;">
         </div>
       </marquee>
     </div>
+    
   </header>
   
   <main>
-    <nav><br>
+    <nav><br><br><br>
       <ul>
         <li><a href="https://docs.google.com/spreadsheets/d/1_JZYSKANxw8OCcrmXtF3LhGz0PXnTgl9WUs71Fl3znk/edit?usp=drive_link" class="blink">Daily Work Reports</a></li>
         <li><a href="https://docs.google.com/spreadsheets/d/1eMAqvEqRSgV1MM7HH4qxt12aKNjqwxHaE2YXm7WLHt0/edit?usp=drive_link" class="blink">Service Reports</a></li>
         <li><a href="https://docs.google.com/spreadsheets/d/1BvLMVYwNYZoyLwNX7reqiSMJ5k91IrhxIySU58JpbCw/edit?usp=drive_link" class="blink">Installation Reports</a></li>
       </ul>
-    </nav>
+    </nav><br><br><br>
 
     <!-- Centered Logout Button -->
     <a href="#" id="logoutBtn" class="blink">Logout</a>

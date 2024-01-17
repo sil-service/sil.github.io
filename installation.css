@@ -1,92 +1,101 @@
- 
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #a81414;
-      padding: 0;
-    }
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #a81414;
+  padding: 0;
+  background-image: url('./ins.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
-    .container {
-      max-width: 960px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #a9e9f1;
-      box-shadow: 0 0 10px rgba(206, 200, 200, 0.1);
-    }
+.container {
+  max-width: 960px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #a9e9f1;
+  box-shadow: 0 0 10px rgba(206, 200, 200, 0.1);
+}
 
-    h1 {
-      text-align: center;
-    }
+h1 {
+  text-align: center;
+}
 
-    form {
-      margin-top: 20px;
-    }
+form {
+  margin-top: 20px;
+}
 
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
+label {
+  display: block;
+  margin-bottom: 5px;
+}
 
-    input[type="text"],
-    input[type="date"],
-    select {
-      width: calc(48% - 10px);
-      padding: 8px;
-      margin-bottom: 25px;
-    }
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 
-    /* Table Styles */
-    table {
-      font-family: Arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 20px;
-    }
+/* Table Styles */
+table {
+  font-family: Arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
 
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
 
-    th {
-      background-color: #f2f2f2;
-    }
+th {
+  background-color: #f2f2f2;
+}
+/* Styling for the 'Go to Dashboard' button */
 
-    /* Additional styles for the button and form */
- .submit-btn,
-    .dashboard-btn {
-      display: block;
-      margin: 20px auto;
-      padding: 20px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      border: none;
-      border-radius: 4px;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-    }
+.dashboard-btn {
+  display: inline-block;
+  width: 30%;
+  padding: 10px;
+  background-color: #a81414;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
 
-    .submit-btn {
-      background-color: dodgerblue;
-    }
+/* Styling for the 'Submit' button */
+.submit-btn {
+  display: inline-block;
+  width: 30%;
+  padding: 10px;
+  background-color: green;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-    .dashboard-btn {
-      background-color: green; /* You can change this color */
-    }
+/* Styling for icon inside buttons */
+.material-icons {
+  vertical-align: middle;
+  margin-right: 5px; /* Add space between icon and text */
+}
 
-    .submit-btn:hover,
-    .dashboard-btn:hover {
-      background-color: #007acc;
-    }
-    /* Background Image */
-    body {
-      background-image: url('./ins.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
-    /* Power Supply Details Form table styles */
+/* .submit-btn:hover,
+.dashboard-btn:hover {
+  background-color: #007acc;
+} */
+
+/* Power Supply Details Form table styles */
 .table {
   display: table;
   width: 100%;
@@ -110,7 +119,7 @@
 }
 
 .cell input[type="text"] {
-  width: calc(100% - 24px); /* Adjust input width */
+  width: calc(100% - 24px);
   padding: 5px;
   box-sizing: border-box;
 }
@@ -120,40 +129,13 @@
   border: 1px solid dodgerblue;
 }
 
-/* ... (existing styles) ... */
-
 /* Adjusted column sizes for the table */
 #thickness-table th,
 #thickness-table td {
-  width: 25%; /* Equal width for all columns in the table */
+  width: 20%;
 }
 
 /* Improved styling for form inputs */
-input[type="text"],
-input[type="date"],
-select,
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Styling for the submit button */
-.submit-btn {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* Styling for the 'Other' section table */
 #other-table {
   margin-top: 20px;
   width: 100%;
@@ -180,15 +162,11 @@ textarea {
   }
 }
 
-/* ... (existing styles) ... */
 
- 
-    /* Your existing CSS */
-
-    /* Hide elements with class 'print-hide' when printing */
-    @media print {
-      .print-hide {
-        display: none !important;
-      }
-    }
- 
+/* Hide buttons when printing */
+@media print {
+  .submit-btn,
+  .dashboard-btn {
+    display: none;
+  }
+}

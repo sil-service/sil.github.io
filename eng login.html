@@ -3,79 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #bed5ec; /* Updated background color */
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #c9d7d7;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
     }
 
     .login-box {
-      background-color: #dee5ed; /* Updated background color */
+      background-color: rgba(7, 100, 137, 0.171);
       padding: 40px;
-      border-radius: 8px;
+      border-radius: 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       text-align: center;
+      width: 400px;
+    }
+
+    /* New styles for icon and input container */
+    .input-container {
+      display: flex;
+      align-items: center;
+      position: relative;
     }
 
     input[type="email"],
     input[type="password"],
-    button {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-      transition: border-color 0.3s ease-in-out;
+    input[type="text"] {
+      flex: 1;
+      width: calc(100% - 24px);
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ff69b4;
+      font-size: 16px;
     }
 
-    input[type="email"]:focus,
-    input[type="password"]:focus {
-      outline: none;
-      border-color: #a73c3c;
+    .material-icons {
+      margin-right: 5px;
     }
 
     button {
-      background-color: #68dd79; /* Updated login button color */
-      color: #130101;
+      width: calc(50% - 6px);
+      background-color: #4285f4;
+      color: #fff;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
       border: none;
-      transition: background-color 0.3s ease-in-out;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
     }
 
-    button:hover {
-      background-color: #81afde; /* Updated hover color */
-    }
-
-    img {
-      width: 320px; /* Adjust the logo size as needed */
-      height: auto;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      margin-bottom: 20px;
-      color: #dd4646;
-    }
     .back-button {
-      background-color: #81afde; /* Adjust the color as needed */
-      color: #130101;
-      cursor: pointer;
+      width: calc(50% - 6px);
+      background-color: #6c757d;
+      color: #fff;
+      font-weight: bold;
       border: none;
-      padding: 10px;
-      border-radius: 5px;
-      margin-bottom: 20px;
-      transition: background-color 0.3s ease-in-out;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
     }
 
-    .back-button:hover {
-      background-color: #68dd79; /* Adjust the hover color as needed */
+    button:hover, .back-button:hover {
+      background-color: #1967d2;
     }
   </style>
 </head>
@@ -83,33 +85,50 @@
   <div class="login-box">
     <div>
       <img src="./sil.png" alt="logo">
-    </div>
-    <h2>Login</h2>
+    </div><br>
+    <h2>Service Engineer Login</h2><br>
     <form id="loginForm">
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button type="button" onclick="login()">Login</button>
-      <button class="back-button" onclick="goBack()">Back</button>
+      <div class="input-container">
+        <!-- Container for icon and input -->
+        <i class="material-icons">person</i>
+        <input type="text" id="username" placeholder="Username" required="sil">
+      </div>
+      <br>
+      <div class="input-container">
+        <!-- Container for icon and input -->
+        <i class="material-icons">lock</i>
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+      <br>
+      <button type="button" onclick="login()">
+        <i class="material-icons">login</i> Login
+      </button>
+      <button class="back-button" onclick="goBack()">
+        <i class="material-icons">arrow_back</i> Back
+      </button>
     </form>
   </div>
 
   <script>
-   function login() {
-  var email = document.getElementById("email").value.toLowerCase().trim();
-  var password = document.getElementById("password").value.trim();
+    function login() {
+      var username = document.getElementById("username").value.toLowerCase().trim();
+      var password = document.getElementById("password").value.trim();
 
-  // Check if the entered credentials match the default engineer credentials
-  if (email === "service.engineer" && password === "P@ssw0rd@123") {
-    alert("Login successful!");
-    // Redirect to a new page or perform any other action for successful login
-    window.location.href = 'select.html?username=' + email;
-  } else { 
-    alert("Invalid email or password. Please try again.");
-  }
-}function goBack() {
-      window.location.href = 'index.html'; // Update the page name accordingly
+      if (username === "service.engineer" && password === "P@ssw0rd@123") {
+        alert("Login successful!");
+        window.location.href = 'select.html?username=' + username;
+      } else { 
+        alert("Invalid username or password. Please try again.");
+      }
     }
 
+    function goBack() {
+      window.location.href = 'index.html';
+    }
   </script>
 </body>
 </html>
+
+</body>
+</html>
+
