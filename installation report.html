@@ -411,7 +411,7 @@
 
     </script>
     
-      <script>
+      <!-- <script>
         function addOtherRow() {
           // ... (existing code for adding rows)
         }
@@ -460,7 +460,51 @@
         document.getElementById('report-form').addEventListener('submit', handleFormSubmission);
       </script>
       
+    </script> -->
+    <script>
+      let pdfGenerated = false; // Variable to track if PDF has been generated
+    
+      function submitForm(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+    
+        // Check if the PDF has already been generated
+        if (pdfGenerated) {
+          alert("PDF has already been generated. Please proceed to the next step.");
+          return;
+        }
+    
+        // Display a confirmation dialog
+        if (confirm("Are you sure you want to submit the form and generate PDF?")) {
+          // Collect form data (you can use FormData or any method you prefer)
+          let formData = new FormData(document.getElementById('report-form'));
+    
+          // Example: Sending form data via fetch to a Google Apps Script
+          fetch('https://script.google.com/macros/s/AKfycbxV2JOxT621Jo8tEnuihXGN8_dYn-MY3AQfqIuLkrOGTN-3kd8gNIC8yn25mzbGCB3EBw/exec', {
+            method: 'POST',
+            body: formData
+          })
+            .then(response => {
+              // Handle the response from the server if needed
+              console.log('Form submitted successfully!', response);
+    
+              // After the form submission logic, initiate the print
+              window.print();
+              pdfGenerated = true; // Set the flag to true after successful PDF generation
+            })
+            .catch(error => {
+              console.error('Error submitting form:', error);
+            });
+        }
+      }
+    
+      function goToDashboard() {
+        // Display a confirmation dialog
+        if (confirm("Are you sure you want to go to the dashboard?")) {
+          window.location.href = './select.html';
+        }
+      }
     </script>
+    
 <script>
   function addRow() {
   // Get the table body where new rows will be added

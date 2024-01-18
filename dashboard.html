@@ -1,16 +1,34 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Dashboard</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- Include Material Icons stylesheet -->
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: rgb(209, 215, 226);
+      background-color: #f2f2f2; /* Light gray background */
     }
+
+    .header-container {
+      background-color: #68dbd1; /* Dark background for the header */
+      padding: 10px;
+      text-align: center;
+    }
+
+    .logo-container img {
+      width: 350px; /* Adjust the width as needed */
+    }
+
+    .choose-menu-container {
+      text-align: center;
+      padding: 20px;
+    }
+
     .folder-container {
       display: flex;
       justify-content: center;
@@ -18,63 +36,102 @@
       flex-wrap: wrap;
       padding: 20px;
     }
+
     .folder {
-      background-color: rgb(239, 24, 24);
+      background-color: #007bff; /* Blue folders */
       padding: 20px;
       margin: 20px;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       text-decoration: none;
-      color: rgb(0, 0, 0);
+      color: white;
       transition: transform 0.3s ease;
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
     .folder:hover {
       transform: translateY(-5px);
     }
+
+    .folder .icon {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
     .logout-container {
       display: flex;
       justify-content: center;
       align-items: center;
       margin-top: 20px;
     }
+
     .logout-btn {
-      background-color: #4CAF50;
+      background-color: #ff0000;
       color: white;
       padding: 10px 15px;
       border: none;
       border-radius: 4px;
       cursor: pointer;
+      font-weight: bold;
     }
   </style>
 </head>
+
 <body>
-  <div class="folder-container">
-    <a href="https://drive.google.com/drive/folders/1LWa4M9XgYcwhI2SXmHQTKv32ixlcsS5Z?usp=drive_link" class="folder">Tubecutter</a>
-    <a href="https://drive.google.com/drive/folders/1CkEOKVeY6BJrYolUr7CZShaNAylMLXjA?usp=drive_link" class="folder">Fanuc</a>
-    <a href="https://drive.google.com/file/d/1qFfRSFMfP01DFdTxOhuqahMV8H71DzIG/view?usp=drive_link" class="folder">Eathergather</a>
-    <a href="https://drive.google.com/file/d/15mxCwVAusKCN-Mug05dyZmUYaezI4GOq/view?usp=drive_link" class="folder">Backhoff</a>
+  <div class="header-container">
+    <div class="logo-container">
+      <img src="./sil.png" alt="Company Logo">
+    </div>
+    <h1 style="color: rgb(15, 1, 1);">Choose Folder</h1>
   </div>
 
-  <div class="logout-container">
-    <button class="logout-btn" onclick="confirmLogout()">Logout</button>
-  </div>
+  <div class="choose-menu-container">
+    <div class="folder-container">
+      <a href="https://drive.google.com/drive/folders/1g4fDuGJ-lQUvghAa2WGubJoJHLlB7eHc?usp=drive_link"
+        class="folder">
+        <span class="material-icons icon">folder</span>
+        Tubecutter
+      </a>
+      <a href="https://drive.google.com/drive/folders/1DX-_JvEQKreOM0zjcXSGgV7b0OmlPhge?usp=drive_link"
+        class="folder">
+        <span class="material-icons icon">folder</span>
+        Fanuc
+      </a>
+      <a href="https://drive.google.com/drive/folders/1OO2rlclGo6QqDX_eKOAI2JSe4B5dCOts?usp=drive_link"
+        class="folder">
+        <span class="material-icons icon">folder</span>
+        Eathergather
+      </a>
+      <a href="https://drive.google.com/drive/folders/1yj2hjT_DOJPtxjfO9mZdiYgDQ5v0l4Z7?usp=drive_link"
+        class="folder">
+        <span class="material-icons icon">folder</span>
+        Backhoff
+      </a>
+    </div>
 
-  <!-- Add your login page HTML here (replace the placeholder link) -->
-  <!-- Example: <div id="login-page" style="display: none;"> ... </div> -->
+    <div class="logout-container">
+      <button class="logout-btn" onclick="confirmLogout()">
+        <span class="material-icons">exit_to_app</span>
+        Logout
+      </button>
+    </div>
+  </div>
 
   <script>
     function confirmLogout() {
       var confirmLogout = confirm("Are you sure you want to logout?");
       if (confirmLogout) {
-        // Redirect to your login page or perform necessary logout actions
-        // Example: window.location.href = 'login.html';
         alert('Logout successful...');
-        window.location.href = './user.html'; // Replace with your actual login page link
+        window.location.href = './user.html';
       } else {
-        // Do nothing if the user cancels the logout
         alert('Logout canceled.');
       }
     }
   </script>
 </body>
+
 </html>
