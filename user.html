@@ -78,6 +78,10 @@
 
     button:hover, .back-button:hover {
       background-color: #1967d2;
+    }    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -86,16 +90,18 @@
     <div>
       <img src="./sil.png" alt="logo">
     </div><br>
-    <h2>User Login</h2><br>
+    <h2>Admin Login</h2><br>
     <form id="loginForm">
       <div class="input-container">
         <!-- Container for icon and input -->
+        <label for="username">Username:</label>
         <i class="material-icons">person</i>
         <input type="text" id="username" placeholder="Username" required="sil">
       </div>
       <br>
       <div class="input-container">
         <!-- Container for icon and input -->
+        <label for="password">Password:</label>
         <i class="material-icons">lock</i>
         <input type="password" id="password" placeholder="Password" required>
       </div>
