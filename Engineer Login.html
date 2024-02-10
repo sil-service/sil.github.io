@@ -79,6 +79,14 @@
     #backButton:hover {
       background-color: #999;
     }
+    #passwordVisibilityIcon {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+  }
   </style>
 </head> 
 <body>
@@ -106,9 +114,11 @@
         
         <div class="input-container">
           <i class="material-icons">lock</i>
+          <i class="material-icons" id="passwordVisibilityIcon" onclick="togglePasswordVisibility()">visibility</i>
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" placeholder="Password" required>
         </div><br>
+        
         
         <div style="display: flex; justify-content: space-between;">
           <button type="submit" style="margin-right: 5%;"><i class="material-icons">person_add</i> Login</button>
@@ -160,6 +170,18 @@
       // Add any specific behavior for the back button, e.g., navigating to the previous page
       window.location.href = "./index.html";
     }
+    function togglePasswordVisibility() {
+    var passwordInput = document.getElementById("password");
+    var passwordVisibilityIcon = document.getElementById("passwordVisibilityIcon");
+
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      passwordVisibilityIcon.innerText = "visibility_off"; // Change icon to hide
+    } else {
+      passwordInput.type = "password";
+      passwordVisibilityIcon.innerText = "visibility"; // Change icon to show
+    }
+  }
   </script>
 </body>
 </html>
