@@ -5,90 +5,9 @@
     <meta charset="UTF-8">
     <title>Services Engineer Page</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <style>
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #efe3e3;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-            header img {
-                max-width: 200px;
-                height: auto;
-            }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-            .form-group label {
-                display: block;
-                font-weight: bold;
-                margin-bottom: 5px;
-            }
-
-            .form-group input[type="text"],
-            .form-group textarea,
-            .form-group select {
-                width: calc(100% - 22px);
-                padding: 10px;
-                border-radius: 4px;
-                border: 1px solid #b29393;
-                margin-top: 5px;
-            }
-
-            .form-group select {
-                appearance: none;
-                -webkit-appearance: none;
-                background: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>') no-repeat right 10px center/12px auto;
-            }
-
-            .form-group .button {
-                padding: 10px 20px;
-                background-color: #4CAF50;
-                color: rgb(14, 9, 9);
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                font-size: 16px;
-            }
- 
-        #message {
-            display: none;
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border-radius: 4px;
-        }
-
-        .mandatory::after {
-            content: '*';
-            color: red;
-        }
-        #Area option {
-    text-transform: uppercase;
-    font-weight: bold;
-}
-    </style>
-</head>
+    <style></style>
+    <link rel="stylesheet" href="./Serviceform.css">
+  </head>
 <body>
     <div class="container">
 
@@ -96,16 +15,16 @@
             <img src="./sil.png" alt="Company Logo">
         </header>
         <Center><h2>Services Report</h2></Center>
-                <form method="POST" action="https://script.google.com/macros/s/AKfycbxsGjNb26LZLsJZ1gMw4IioBYnYiDyvuPAC54TNSIgfMoPi_pNE8dOZ5IITZYpMTqNB0g/exec">  
-                 <!-- <form method="POST" action="https://script.google.com/a/macros/silasers.com/s/AKfycbz0A30nzEOf8HHpHKAmjQwbpEbsleJZY7En80YTQ044GZquTIQZSbX5R2NUci_JtFN9Pw/exec">   -->
-                    <div class="form-group">
-                        <label for="EmpID">Emp ID<span class="mandatory"></span>:</label>
-                        <input type="text" id="EmpID" name="EmpID" pattern="[0-9]+" title="Please enter only numbers" required>
-                    </div>                    
-                    <div class="form-group">
-                <label for="Engineer Name">Engineer Name<span class="mandatory"></span>:</label>
-                <input type="text" id="Engineer Name" name="Engineer Name" required>
-            </div>
+        <form method="POST" action="https://script.google.com/macros/s/AKfycbweOqTLT7uhKBxQeKHWAD5pDPfXhmVQ7aY7vkoWZP8iGiUrrAaSrSQjAPktovSOYsDXDg/exec">  
+                 <!-- <form method="POST" action="https://script.google.com/a/macros/silasers.com/s/AKfycbwbvA-DVRi0mw2QSrdBLmgbE1s5zwLIInjXJRJWUvyktFb9yVdFCsoYfv_DZqvcvg-E/exec">   -->
+                <div class="form-group">
+                    <label for="EmpID">Emp ID<span class="mandatory"></span>:</label>
+                    <input type="text" id="EmpID" name="EmpID" pattern="[0-9]+" title="Please enter only numbers" required>
+                </div>                    
+                <div class="form-group">
+                    <label for="Engineer Name">Engineer Name<span class="mandatory"></span>:</label>
+                    <input type="text" id="Engineer Name" name="Engineer Name"  required>
+                </div>
             <div class="form-group">
                 <label for="Company Name">Company Name<span class="mandatory"></span>:</label>
                 <input type="text" id="Company Name" name="Company Name" required>
@@ -118,17 +37,19 @@
                 <label for="Select Machine Type">Select Machine Type<span class="mandatory"></span>:</label>
                 <select id="Select Machine Type" name="Select Machine Type" onchange="showMachineCodeInput()" required>
                     <option value="">Select Machine Type</option>
+                    <option value="Ecat sheet Cutting">Ecat sheet Cutting</option>
+                    <option value="Backhoff sheet Cutting">Backhoff sheet Cutting</option>
+                    <option value="Fanuc sheet Cutting">Fanuc sheet Cutting</option>
+                    <option value="3 Chuck tube Cutting">3 Chuck tube Cutting</option>
+                    <option value="2 Chuck tube Cutting">2 Chuck tube Cutting</option>
+                    <option value="Sheet + Tube Cutting Machine">Sheet + Tube Cutting Machine</option>
+                    <option value="Welding Machine">Welding Machine</option>
                     <option value="Marking Machine">Marking Machine</option>
                     <option value="Laser Cutting">Laser Cutting</option>
-                    <option value="2 Chuk tube Cutting">2 Chuk tube Cutting</option>
-                    <option value="3 Chuk tube Cutting">3 Chuk tube Cutting</option>
-                    <option value="Linear Motor Machine">Linear Motor Machine</option>
-                    <option value="Fanuc sheet Cutting">Fanuc sheet Cutting</option>
-                    <option value="Backhoff sheet Cutting">Backhoff sheet Cutting</option>
-                    <option value="Ecat sheet Cutting">Ecat sheet Cutting</option>
-                    <option value="Combo Machine">Combo Machine</option>
+                    <option value="Ingraver Machine">Ingraver Machine</option>
+                    <option value="Router Machine">Router Machine</option>
+                    <option value="Robot Cutting / Welding">Robot Cutting / Welding</option>
                     <option value="SPM">SPM</option>
-                    <option value="Welding Machine">Welding Machine</option>
                     <option value="Other">Other</option>
                     <!-- Add more machine types as needed -->
                 </select>
@@ -146,438 +67,106 @@
                 </select>
             </div>          
             <div class="form-group">
-                <label for="Machine Serial Number">Machine Serial Number<span class="mandatory">*</span>:</label>
+                <label for="Machine Serial Number">Machine Serial Number<span class="mandatory"></span>:</label>
                 <input type="text" id="Machine Serial Number" name="Machine Serial Number" required>
             </div>
            
             <div class="form-group">
-                <label for="Start-Date">Start Date<span class="mandatory">*</span>:</label>
+                <label for="Start-Date">Start Date<span class="mandatory"></span>:</label>
                 <input type="date" id="Start-Date" name="Start-Date" required>
             </div>
             <div class="form-group">
-                <label for="End-Date">End Date<span class="mandatory">*</span>:</label>
+                <label for="End-Date">End Date<span class="mandatory"></span>:</label>
                 <input type="date" id="End-Date" name="End-Date" required>
             </div>
             <div id="workingDays"></div><br><br>
             <div class="form-group">
-                <label for="Total-Working-Days"> Number of Working Days<span class="mandatory">*</span>:</label>
+                <label for="Total-Working-Days"> Number of Working Days<span class="mandatory"></span>:</label>
                 <input type="number" id="Total-Working-Days" name="Total-Working-Days" min="1" step="1" required>
             </div>
-            <div class="form-group">
-                <label for="Area">Select Area<span class="mandatory"></span>:</label>
-                <select id="Select Area" name="Select Area" onchange="showProblems()" required>
-                    <option value="">Area</option>
-                    <option value="MACHINE">MACHINE</option>
-                    <option value="PALLET SYSTEM">PALLET SYSTEM</option>
-                    <option value="CUTTING HEAD">CUTTING HEAD</option>
-                    <option value="SOFTWARE">SOFTWARE</option>
-                    <option value="LASER">LASER</option>
-                    <option value="CHILLER">CHILLER</option>
-                    <option value="EXHAUST SUCTION">EXHAUST SUCTION</option>
-                    <option value="NESTING SOFTWARE">NESTING SOFTWARE</option>
-                    <option value="CUTTING APPLICATIONS">CUTTING APPLICATIONS</option>
-                    <OPtion value="OTHER TYPE ISSUES">OTHER TYPE ISSUES</OPtion>
-                </select>
-                    <input type="hidden" id="Area" name="Area"/>
-                <div id="machineProblems" style="display: none;">
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="DRIVE ALARM">DRIVE ALARM</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="HARD LIMIT ALARM">HARD LIMIT ALARM</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="ZIG ZAG CUTTING">ZIG ZAG CUTTING</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="CAPACITANCE SENSOR">CAPACITANCE SENSOR</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="AXIS SENSOR">AXIS SENSOR</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="OTION NOISE">MOTION NOISE</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="GAS PRESSURE ALARM">GAS PRESSURE ALARM</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="AXIX SODT LIMIT">AXIX SODT LIMIT</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="GAS LEAKAG">GAS LEAKAGE</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="GAS FLOW">GAS FLOW</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="DIAGONAL">DIAGONAL</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="COMMUNICATION BREAK">COMMUNICATION BREAK</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="OVALITY / CIRCULARITY">OVALITY / CIRCULARITY</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="EPR ISSUE">EPR ISSUE</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="OTHERS">OTHERS</label><br>
-            
+            <label for="selectArea">Select Area<span class="mandatory"></span>:</label>
+            <div class="custom-dropdown">
+                <div id="dropdownContent" class="dropdown-content">
+                    <label><input type="checkbox" id="checkbox_MACHINE" value="MACHINE" onchange="updateSelectedAreas()"> MACHINE</label><br>
+                    <label><input type="checkbox" id="checkbox_PALLET_SYSTEM" value="PALLET_SYSTEM" onchange="updateSelectedAreas()"> PALLET_SYSTEM</label><br>
+                    <label><input type="checkbox" id="checkbox_CUTTING_HEAD" value="CUTTING_HEAD" onchange="updateSelectedAreas()"> CUTTING_HEAD</label><br>
+                    <label><input type="checkbox" id="checkbox_SOFTWARE" value="SOFTWARE" onchange="updateSelectedAreas()"> SOFTWARE</label><br>
+                    <label><input type="checkbox" id="checkbox_LASER" value="LASER" onchange="updateSelectedAreas()"> LASER</label><br>
+                    <label><input type="checkbox" id="checkbox_CHILLER" value="CHILLER" onchange="updateSelectedAreas()"> CHILLER</label><br>
+                    <label><input type="checkbox" id="checkbox_EXHAUST_SUCTION" value="EXHAUST_SUCTION" onchange="updateSelectedAreas()"> EXHAUST_SUCTION</label><br>
+                    <label><input type="checkbox" id="checkbox_NESTING_SOFTWARE" value="NESTING_SOFTWARE" onchange="updateSelectedAreas()"> NESTING_SOFTWARE</label><br>
+                    <label><input type="checkbox" id="checkbox_CUTTING_APPLICATIONS" value="CUTTING_APPLICATIONS" onchange="updateSelectedAreas()"> CUTTING_APPLICATIONS</label><br>
+                    <label><input type="checkbox" id="checkbox_OTHER_TYPE_ISSUES" value="OTHER_TYPE_ISSUES" onchange="updateSelectedAreas()"> OTHER_TYPE_ISSUES</label><br>
+                                <!-- Add other checkboxes here -->
                 </div>
-            
-                <div id="palletsystemProblems" style="display: none;">
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="NO PALLET MOVEMENT">NO PALLET MOVEMENT</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="PALLET A/B LIMIT ALARM">PALLET A/B LIMIT ALARM</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="PALLET SPEED PROBLEM">PALLET SPEED PROBLEM</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="PALLET SLOW LIMIT NOT WORKING">PALLET SLOW LIMIT NOT WORKING</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="PALLET CRASHING WITH LOCKING SYSTEM/STOPPER">PALLET CRASHING WITH LOCKING SYSTEM/STOPPER</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="PALLET MAKING NOISE DURING MOVEMENT">PALLET MAKING NOISE DURING MOVEMENT</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="PPALLET CHAIN BROKEN">PALLET CHAIN BROKEN</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="PALLET CLAMPING ISSUE">PALLET CLAMPING ISSUE</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="CHAIN GUIDE WEAR OUT/DAMAGE">CHAIN GUIDE WEAR OUT/DAMAGE</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="PALLET MOTOR MAKING NOICE">PALLET MOTOR MAKING NOICE</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="VFD SHOWING ERROR">VFD SHOWING ERROR</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="PALLET RAIL AND WHEELS">PALLET RAIL AND WHEELS</label><br>
-                    <label><input type="checkbox" onchange="selectProblem(event)" value="OTHERS">OTHERS</label><br>
-                </div>
-            
-            
-            <div id="cuttingHeadProblems" style="display: none;">
-                <label><input type="checkbox" onchange="selectProblem(event)" value="OPTICAL">OPTICAL</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="FREQLENT PROTECTION GAS DAMAGE">FREQLENT PROTECTION GAS DAMAGE</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="CERAMIC BRAKING">CERAMIC BRAKING</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="TRA PLATE DAMAGE">TRA PLATE DAMAGE</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="HEAD SENSING">HEAD SENSING</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="HEAD TIP TOUCH">HEAD TIP TOUCH</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="HEAD TEMPERATURE RISE / FALL">HEAD TEMPERATURE RISE / FALL</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="CAPACITANCE CALIBRATION">CAPACITANCE CALIBRATION</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="HEAD TEMPERATURE ALARM">HEAD TEMPERATURE ALARM</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="HEAD CALIBRATION ">HEAD CALIBRATION </label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="OTHERS">OTHERS</label><br>
             </div>
-            
-            <div id="SoftwareProblems" style="display:none;">
-                <label><input type="checkbox" onchange="selectProblem(event)" value="SOFTWARE NOT BOOTING UP">SOFTWARE NOT BOOTING UP</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="LICENSE EXPIRE">LICENSE EXPIRE</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="PLC NOT RUNNING">PLC NOT RUNNING</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="HMI PARAMETER GOT CHANGED">HMI PARAMETER GOT CHANGED</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="GHOST INSTALL">GHOST INSTALL</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="HMI MALFUNCTION">HMI MALFUNCTION</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="HMI GOT STUCK">HMI GOT STUCK</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="CUTTING LAYER NOT WORKING">CUTTING LAYER NOT WORKING</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="HMI LANGUAGE GOT CHANGED">HMI LANGUAGE GOT CHANGED</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="UNWANTED ALARMS GENERATED">UNWANTED ALARMS GENERATED</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="NO LOADING PARAMETERS">NO LOADING PARAMETERS</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="CUTTING LAYER NOT WORKING ">CUTTING LAYER NOT WORKING </label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="MATERIAL BURNING">MATERIAL BURNING</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="FLIM CUT">FLIM CUT</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="OTHERS">OTHERS</label><br>
-            </div>
-            
-            <div id="LaserProblems" style="display: none;">
-                <label><input type="checkbox" onchange="selectProblem(event)" value="CRITICAL ERROR">CRITICAL ERROR</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="FIBER INTERLOCK">FIBER INTERLOCK</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="PS ALARM">PS ALARM</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="LOW TEMPERATURE ALARM">LOW TEMPERATURE ALARM</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="HIGH TEMPERATUE ALARM">HIGH TEMPERATUE ALARM</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="OVERHEAT">OVERHEAT</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="BACK REFLECTION">BACK REFLECTION</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="AIMING BEAM ALARM">AIMING BEAM ALARM</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="PS FAILURE">PS FAILURE</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="OTHERS">OTHERS</label><br>
-            </div>
-            
-            <div id="ChillerProblems" style="display: none;">
-                <label><input type="checkbox" onchange="selectProblem(event)" value="LOW TEMPERATURE ">LOW TEMPERATURE</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="WATER LEAKAGE">WATER LEAKAGE</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="WATER PUMP CREATING LOUD NOICE">WATER PUMP CREATING LOUD NOICE</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="FAN NOT WORKING">FAN NOT WORKING</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="COMPRESSOR NOT WORKING">COMPRESSOR NOT WORKING</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="WATER LEVEL ALARM">WATER LEVEL ALARM</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="COMPRESSOR MAKING LOUD NOICE">COMPRESSOR MAKING LOUD NOICE</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="BIG TANK WATER PUMP NOT WORKING">BIG TANK WATER PUMP NOT WORKING</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="SMALL TANK WATER PUMP NOT WORKING">SMALL TANK WATER PUMP NOT WORKING</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="OTHERS">OTHERS</label><br>
-            </div>
-            
-            <div id="ExhaustSuctionProblems" style="display: none;">
-                <label><input type="checkbox" onchange="selectProblem(event)" value="BLOWER / FUME EXTRACTOR MCB TRIPPING">BLOWER / FUME EXTRACTOR MCB TRIPPING</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="SMOKE FROM BLOWER MOTOR">SMOKE FROM BLOWER MOTOR</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="PLC NOT TURNING ON (FUME EXTACTOR)">PLC NOT TURNING ON (FUME EXTACTOR)</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="SOLENOID VALVE NOT OPERATING">SOLENOID VALVE NOT OPERATING</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="PURGE STORE CYCLE ISSSUE">PURGE STORE CYCLE ISSSUE</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="AUTP FILTER CLEANING ">AUTP FILTER CLEANING </label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="NO SUCTION ON UPPER PALLET">NO SUCTION ON UPPER PALLET</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="NO SUCTION ON BOTH PALLET">NO SUCTION ON BOTH PALLET</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="FLAPS NOT OPERATING">FLAPS NOT OPERATING</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="MULTIPLE FLAPS OPENING SAME TIME">MULTIPLE FLAPS OPENING SAME TIME</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="OTHERS">OTHERS</label><br>
-            </div>
-            
-            <div id="NestingSoftwareProblems" style="display: none;">
-                <label><input type="checkbox" onchange="selectProblem(event)" value="COMMON CUT">COMMON CUT</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="SIGMANEST SOFTWARE INSTALLATION">SIGMANEST SOFTWARE INSTALLATION</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="E-CAT SOFTWARE INSTALLATION">E-CAT SOFTWARE INSTALLATION</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="POST ERROR">POST ERROR</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="NC FILE NOT GENETRAING">NC FILE NOT GENETRAING</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="DXF / DWG FILE IMPORT">DXF / DWG FILE IMPORT</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="REPORT GENERATION">REPORT GENERATION</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="NC FILE WRONG STRUCTURE">NC FILE WRONG STRUCTURE</label><br>
-                <label><input type="checkbox" onchange="selectProblem(event)" value="OTHERS">OTHERS</label><br>
-            </div>
-            <div id="CuttingApplicationsProblems" style="display: none;">
-            <label><input type="checkbox" onchange="selectProblem(event)" value="OTHERS">OTHERS</label><br>
-            </div>
-            <div id="OtherTypeIssuesProblems" style="display: none;">
-                <label><input type="checkbox" onchange="selectProblem(event)" value="OTHERS">OTHERS</label><br>
-            </div>        
-
-            <div class="form-group">
-                <label for="Description">Description<span class="mandatory"></span>:</label>
-                <textarea id="Description" name="Description" rows="4" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="Diagnosis">Diagnosis<span class="mandatory"></span>:</label>
-                <input type="text" id="Diagnosis" name="Diagnosis" required>
-            </div>
-            <div class="form-group">
-                <label for="Status">Result<span class="mandatory"></span>:</label>
-                <select id="Status" name="Status" required>
-                    <option value="">Select Status</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Completed">Completed</option>
-                    <option value="On Hold">On Hold</option>
-                    <option value="Cancelled">Cancelled</option>
-                </select>
-                <input type="hidden" id="TokenNumber" name="Token Number">
-            </div>
-            <div class="form-group">
-                <label for="Customer Feedback">Customer Feedback:</label>
-                <textarea id="Customer Feedback" name="Customer Feedback" rows="7" ></textarea>
-            </div>
-            <div class="form-group">
-                <label for="Customer Name Seal & Sign">Customer Name Seal & Sign:</label>
-                <textarea id="Customer Name Seal & Sign" name="Customer Name Seal & Sign" rows="4" ></textarea>
-            </div>
-            <div style="text-align: center;">
-                <button type="submit" id="submitButton" style="color: #ffffff; background-color: #4CAF50; padding: 10px 20px; font-size: 16px; float: left;">
-                    <i class="material-icons">send</i> Submit
-                </button>
-                <a href="./select.html" id="dashboardLink" style="color: #ffffff; background-color: #d9534f; padding: 10px 20px; font-size: 16px; text-decoration: none; margin-left: 10px; float: right;">
-                    <i class="material-icons">dashboard</i> Go To Dashboard
-                </a>
-                <div style="clear: both;"></div> <!-- Add a clearing element to prevent content overlap -->
-            
-                <script>
-                    document.getElementById('submitButton').addEventListener('click', function (event) {
-                        // Ask for permission before submitting
-                        if (!confirm('Are you sure you want to submit?')) {
-                            event.preventDefault(); // Prevent the default submit action if the user declines
-                        }
-                    });
-            
-                    document.getElementById('dashboardLink').addEventListener('click', function (event) {
-                        // Ask for permission before navigating to the dashboard
-                        if (!confirm('Are you sure you want to go to the dashboard?')) {
-                            event.preventDefault(); // Prevent the default link action if the user declines
-                        }
-                    });
-                </script>
-            </div>
-            
-                
-
-
-            </div>
-        </form>
-    </div>
-    <!-- <button onclick="printForm()" id="printBtn">Print Form</button> -->
-
-      
-  </body>
-  </html>
-  
-         
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                  let lastTokenNumber = localStorage.getItem('lastTokenNumber');
-                  let lastYear = localStorage.getItem('lastYear');
-              
-                  const currentYear = new Date().getFullYear();
-              
-                  if (!lastTokenNumber || !lastYear || lastYear != currentYear) {
-                    lastTokenNumber = 0;
-                    lastYear = currentYear;
-                  }
-              
-                  document.querySelector('form').addEventListener('submit', function(event) {
-                    event.preventDefault();
-              
-                    // Increment the last token number
-                    lastTokenNumber++;
-              
-                    // Reset token number to 1 if it reaches SIL999999
-                    if (lastTokenNumber > 999999) {
-                      lastTokenNumber = 1;
-              
-                      // Update the year if the token number resets
-                      lastYear = currentYear;
-                    }
-              
-                    // Generate the new token number with the year
-                    const tokenNumber = `SIL${('000000' + lastTokenNumber).slice(-6)} / ${lastYear}`;
-              
-                    // Set the new token number in the form field
-                    document.getElementById('TokenNumber').value = tokenNumber;
-              
-                    // Update the local storage with the new last token number and year
-                    localStorage.setItem('lastTokenNumber', lastTokenNumber);
-                    localStorage.setItem('lastYear', lastYear);
-              
-                    // Submit the form
-                    this.submit();
-                         
-                  // Reset the form after submission
-                  this.reset();
-                  });
-                });
-              </script>
-              
-<script>
-    function showMachineCodeInput() {
-        var selectedMachineType = document.getElementById("MachineType").value; // machine types select here
-        var machineCodeInput = document.getElementById("machineCodeInput");
-
-        if (selectedMachineType !== "") {
-            machineCodeInput.style.display = "block";
-        } else {
-            machineCodeInput.style.display = "none";
-        }
-    }
-</script>
-<script>
-    function showServiceCodeInput() {
-        var selectedServiceType = document.getElementById("ServiceType").value; // Service types select here
-        var ServiceCodeInput = document.getElementById("ServiceCodeInput");
-
-        if (selectedServiceType !== "") {
-            ServiceCodeInput.style.display = "block";
-        } else {
-            ServiceCodeInput.style.display = "none";
-        }
-    }
-</script>
-
-
-<script>
-    // Get references to the input elements
-    var startDateInput = document.getElementById('Start-Date');
-    var endDateInput = document.getElementById('End-Date');
-    var totalWorkingDaysInput = document.getElementById('Total-Working-Days');
-    var workingDaysDiv = document.getElementById('workingDays');
-
-    // Add event listeners to handle date validation and calculate working days
-    startDateInput.addEventListener('input', handleDateChange);
-    endDateInput.addEventListener('input', handleDateChange);
-    totalWorkingDaysInput.addEventListener('input', handleTotalDaysChange);
-
-    function handleDateChange() {
-        var startDate = new Date(startDateInput.value);
-        var endDate = new Date(endDateInput.value);
-
-        // Check if the selected end date is less than the start date
-        if (endDate < startDate) {
-            alert('End date cannot be less than the start date.');
-            endDateInput.value = ''; // Clear the input value
-        } else {
-            var totalDays = calculateTotalDays(startDate, endDate);
-            totalWorkingDaysInput.value = totalDays; // Update total number of days
-            var workingDays = calculateWorkingDays(startDate, endDate);
-            workingDaysDiv.textContent = 'Total Number of days: ' + workingDays;
-        }
-    }
-
-    function handleTotalDaysChange() {
-        var totalDays = parseInt(totalWorkingDaysInput.value);
-        var startDate = new Date(startDateInput.value);
-        var endDate = new Date(endDateInput.value);
-        var workingDays = calculateWorkingDays(startDate, endDate);
-
-        if (totalDays < 1) {
-            alert('Total days must be at least 1.');
-            totalWorkingDaysInput.value = ''; // Clear the input value
-        } else if (totalDays > workingDays) {
-            alert('Total days cannot be greater than total working days.');
-            totalWorkingDaysInput.value = workingDays; // Set the value to the maximum allowed
-        }
-    }
-
-    function calculateTotalDays(startDate, endDate) {
-        // Calculate the difference in milliseconds between the two dates
-        var difference = Math.abs(endDate - startDate);
-
-        // Convert the difference to days
-        var daysDifference = Math.ceil(difference / (1000 * 60 * 60 * 24));
-
-        return daysDifference + 1; // Add 1 to include both start and end dates
-    }
-
-    function calculateWorkingDays(startDate, endDate) {
-        // Calculate the difference in milliseconds between the two dates
-        var difference = Math.abs(endDate - startDate);
-
-        // Convert the difference to days
-        var daysDifference = Math.ceil(difference / (1000 * 60 * 60 * 24));
-
-        return daysDifference + 1; // Add 1 to include both start and end dates as working days
-    }
-</script>
-<script>
-     
-    function showProblems() {
-        var selectedOption = document.getElementById("Select Area").value;
-        var machineProblems = document.getElementById("machineProblems");
-        var palletsystemProblems = document.getElementById("palletsystemProblems");
-        var cuttingheadProblems = document.getElementById("cuttingHeadProblems");
-        var SoftwareProblems = document.getElementById("SoftwareProblems");
-        var LaserProblems = document.getElementById("LaserProblems");
-        var ChillerProblems = document.getElementById("ChillerProblems");
-        var ExhaustSuctionProblems = document.getElementById("ExhaustSuctionProblems");
-        var NestingSoftwareProblems = document.getElementById("NestingSoftwareProblems");
-        var CuttingApplicationsProblems = document.getElementById("CuttingApplicationsProblems");
-        var OtherTypeIssuesProblems = document.getElementById("OtherTypeIssuesProblems");
-        document.getElementById("Area").value="";
-        machineProblems.style.display = "none";
-        palletsystemProblems.style.display = "none";
-        cuttingheadProblems.style.display = "none";
-        SoftwareProblems.style.display = "none";
-        LaserProblems.style.display = "none";
-        ChillerProblems.style.display = "none";
-        ExhaustSuctionProblems.style.display = "none";
-        NestingSoftwareProblems.style.display = "none";
-        CuttingApplicationsProblems.style.display = "none";
-        OtherTypeIssuesProblems.style.display = "none"
-        
-        if (selectedOption === "MACHINE") {
-            machineProblems.style.display = "block";  
-        } else if (selectedOption === "PALLET SYSTEM") {
-            palletsystemProblems.style.display = "block";
-        }
-        else if (selectedOption === "CUTTING HEAD") {
-            cuttingheadProblems.style.display = "block";
-        }
-        else if (selectedOption === "SOFTWARE") {
-            SoftwareProblems.style.display = "block";
-        }
-        else if (selectedOption === "LASER") {
-            LaserProblems.style.display = "block";
-        }
-        else if (selectedOption === "CHILLER") {
-            ChillerProblems.style.display = "block";
-        }
-        else if (selectedOption === "EXHAUST SUCTION") {
-            ExhaustSuctionProblems.style.display = "block";
-        }
-        else if (selectedOption === "NESTING SOFTWARE") {
-            NestingSoftwareProblems.style.display = "block";
-        } 
-        else if (selectedOption === "CUTTING APPLICATIONS") {
-            CuttingApplicationsProblems.style.display = "block";
-        } 
-        else if (selectedOption === "OTHER TYPE ISSUES") {
-            OtherTypeIssuesProblems.style.display = "block";
-        } 
-    }
     
-    function selectProblem(event){
-    var existingSelectedValues=document.getElementById("Area").value;
-    var allSelelectProblems=existingSelectedValues!=undefined && existingSelectedValues!=""?existingSelectedValues.split(','):[];   
-        if(event.target.checked){
-            if(!allSelelectProblems.includes(event.target.value))
-                allSelelectProblems.push(event.target.value);
-        }else{
-            if(allSelelectProblems.includes(event.target.value)){
-                allSelelectProblems= allSelelectProblems.filter(function(element) {
-                    return element !== event.target.value;
-                });
-            }
-        }
-    document.getElementById("Area").value=allSelelectProblems.join(", ")
-    }
-      </script>
+        <!-- Your form content here -->
+        <div id="problemSelection" style="display: none;">
+            <h3>Select Problems:</h3>
+            <div id="problems"></div>
+        </div>
+        <input type="hidden" name="selectArea" id="selectArea">
+        <input type="hidden" name="selectedProblems" id="selectedProblems">
+        <!-- <button type="submit">Submit</button> -->
+    <!-- </form> -->
+    
+    
+    <div class="form-group">
+        <label for="Description">Description<span class="mandatory"></span>:</label>
+        <textarea id="Description" name="Description" rows="4" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="Diagnosis">Diagnosis<span class="mandatory"></span>:</label>
+        <textarea id="Diagnosis" name="Diagnosis" rows="2" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="Status">Result<span class="mandatory"></span>:</label>
+        <select id="Status" name="Status" required>
+            <option value="">Select Status</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="On Hold">On Hold</option>
+            <option value="Cancelled">Cancelled</option>
+        </select>
+        <input type="hidden" id="TokenNumber" name="Token Number">
+    </div>
+    <div class="form-group">
+        <label for="Customer Feedback">Customer Feedback:</label>
+        <textarea id="Customer Feedback" name="Customer Feedback" rows="7" ></textarea>
+    </div>
+    <div class="form-group">
+        <label for="Customer Name Seal & Sign">Customer Name Seal & Sign:</label>
+        <textarea id="Customer Name Seal & Sign" name="Customer Name Seal & Sign" rows="4" ></textarea>
+    </div>
+    <div style="text-align: center;">
+        <button type="submit" id="submitButton" style="color: #ffffff; background-color: #4CAF50; padding: 10px 20px; font-size: 16px; float: left;">
+            <i class="material-icons">send</i> Submit
+        </button>
+        <a href="./select.html" id="dashboardLink" style="color: #ffffff; background-color: #d9534f; padding: 10px 20px; font-size: 16px; text-decoration: none; margin-left: 10px; float: right;">
+            <i class="material-icons">dashboard</i> Go To Dashboard
+        </a>
+        <div style="clear: both;"></div> <!-- Add a clearing element to prevent content overlap -->
+    
+        <script>
+            document.getElementById('submitButton').addEventListener('click', function (event) {
+                // Ask for permission before submitting
+                if (!confirm('Are you sure you want to submit?')) {
+                    event.preventDefault(); // Prevent the default submit action if the user declines
+                }
+            });
+    
+            document.getElementById('dashboardLink').addEventListener('click', function (event) {
+                // Ask for permission before navigating to the dashboard
+                if (!confirm('Are you sure you want to go to the dashboard?')) {
+                    event.preventDefault(); // Prevent the default link action if the user declines
+                }
+            });
+        </script>
+    </div>
+    </div>
+</form>
+</div>
+<script src="./Serviceform.js"></script>
 </body>
 </html>
-
