@@ -12,8 +12,8 @@
   <center><img src="./sil.png" alt="Company Logo"></center>
   
   <h1>Machine Installation/Commissioning Report</h1>
-  <form id="report-form" onsubmit="submitForm(event)"  action="https://script.google.com/macros/s/AKfycbxgnDzbhDeT8zJMND7KIs23mtcb-rS4m-32vODk4dpS-s7OC1WKZsYTzCjzHk8U3lJ5MA/exec" >
-
+  <form id="report-form" onsubmit="submitForm(event)"  action="https://script.google.com/macros/s/AKfycbxe5tPmTW0RGTQ7MAyf38WjeaTnjdvgqKGav1eeZm7pFmAiqloOzecuCOrgSjQL90UbKQ/exec" >
+    <input type="hidden" id="Token Number" name="Token Number">
 <div class="report-details">
            <table>
       <tr>
@@ -54,8 +54,8 @@
         <td colspan="4" style="text-align: center;">
           <select id="machine-type" name="machine-type" required>
             <option value="">Machine Type*</option>
-            <option value="2 Chuk tube Cutting">2 Chuk tube Cutting</option>
-            <option value="3 Chuk tube Cutting">3 Chuk tube Cutting</option>
+            <option value="2 Chuk tube Cutting">2 Chuck tube Cutting</option>
+            <option value="3 Chuk tube Cutting">3 Chuck tube Cutting</option>
             <option value="Linear Motor Machine">Linear Motor Machine</option>
             <option value="Fanuc sheet Cutting">Fanuc sheet Cutting</option>
             <option value="Backhoff sheet Cutting">Backhoff sheet Cutting</option>
@@ -367,7 +367,7 @@
        <button type="button" onclick="goToDashboard()" class="dashboard-btn"><i class="material-icons">dashboard</i> Go to Dashboard</button>
     <!-- </div>
      -->
-    
+   
      <script>
       // Function to handle form submission
       document.getElementById('myForm').addEventListener('submit', function(event) {
@@ -380,10 +380,6 @@
         window.location.href = './select.html';
       });
   
-      // // Function to handle going to the dashboard without form submission
-      // function goToDashboard() {
-      //   window.location.href = './select.html';
-      // }
       function goToDashboard() {
     // Display a confirmation dialog
     if (confirm("Are you sure you want to go to the dashboard?")) {
@@ -424,7 +420,6 @@
     // Append the new row to the table
     otherTable.appendChild(newRow);
   }
-  
       </script>
       
       <script>
@@ -468,17 +463,25 @@ if (isNaN(numberOfDays) || numberOfDays <= 0 || numberOfDays > totalDays) {
             // Display a confirmation dialog
             if (confirm("Are you sure you want to submit the form?")) {
                 // Example: Sending form data via fetch to a Google Apps Script
-                fetch('https://script.google.com/macros/s/AKfycbxgnDzbhDeT8zJMND7KIs23mtcb-rS4m-32vODk4dpS-s7OC1WKZsYTzCjzHk8U3lJ5MA/exec', {
+                fetch('https://script.google.com/macros/s/AKfycbxe5tPmTW0RGTQ7MAyf38WjeaTnjdvgqKGav1eeZm7pFmAiqloOzecuCOrgSjQL90UbKQ/exec', {
                     method: 'POST',
                     body: formData
                 })
-                    .then(response => {
-                        // Handle the response from the server if needed
-                        console.log('Form submitted successfully!', response);
+                .then(response => response.text())
+            .then(tokenNumber => {
+                // Include the token number in your PDF
+                console.log('Token Number:', tokenNumber);
+
+                // After the form submission logic, initiate the print
+                window.print();
+                pdfGenerated = true;
+                    // .then(response => {
+                    //     // Handle the response from the server if needed
+                    //     console.log('Form submitted successfully!', response);
       
-                        // After the form submission logic, initiate the print
-                        window.print();
-                        pdfGenerated = true; // Set the flag to true after successful PDF generation
+                    //     // After the form submission logic, initiate the print
+                    //     window.print();
+                    //     pdfGenerated = true; // Set the flag to true after successful PDF generation
                         
           // Reset the form after successful submission
           document.getElementById('report-form').reset();
@@ -531,8 +534,8 @@ if (isNaN(numberOfDays) || numberOfDays <= 0 || numberOfDays > totalDays) {
                 input.removeAttribute("placeholder");
             });
         }
-        
       </script>
+
       <script>
         // Function to add a new row to the thickness table
         function addRow() {
@@ -600,8 +603,6 @@ if (isNaN(numberOfDays) || numberOfDays <= 0 || numberOfDays > totalDays) {
           // Append the new row to the thickness table body
           thicknessTableBody.appendChild(newRow);
         }
-      </script>
-      
-      
+      </script>     
 </body>
 </html>
