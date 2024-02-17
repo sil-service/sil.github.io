@@ -1,126 +1,226 @@
 
-//       function submitForm(event) {
-//         event.preventDefault(); // Prevent the default form submission behavior
-    
-//         // Collect form data (you can use FormData or any method you prefer)
-//         let formData = new FormData(document.getElementById('report-form'));
-    
-//         // Example: Sending form data via fetch to a Google Apps Script
-//         fetch('https://script.google.com/macros/s/AKfycbw6aBm-uz5u_13z86-zsig-9pVbKzsGyGORFJdaYfNsU6fikzmQzeE8DRxskwm5hjt0PQ/exec', {
-//           method: 'POST',
-//           body: formData
-//         })
-//         .then(response => {
-//           // Handle the response from the server if needed
-//           console.log('Form submitted successfully!', response);
-    
-//           // After the form submission logic, initiate the print
-//           window.print();
-//         })
-//         .catch(error => {
-//           console.error('Error submitting form:', error);
-//         });
-//       }
 
+// Function to add a new row to the thickness table
+function addRow() {
+  // Get the thickness table body
+  var thicknessTableBody = document.getElementById("thickness-table-body");
+
+  // Create a new table row
+  var newRow = document.createElement("tr");
+
+  // Create table data for cutting material dropdown
+  var materialCell = document.createElement("td");
+  var materialSelect = document.createElement("select");
+  materialSelect.name = "material"; // Assign a unique name if needed
+
+  // Add options to the material dropdown
+  var materialOptions = ["Mild Steel", "Stainless Steel", "Aluminum", "Titanium", "Galvanized", "Copper", "Brass"];
+  for (var i = 0; i < materialOptions.length; i++) {
+    var option = document.createElement("option");
+    option.value = materialOptions[i];
+    option.text = materialOptions[i];
+    materialSelect.appendChild(option);
+  }
+
+  materialCell.appendChild(materialSelect);
+
+  // Create table data for thickness input
+  var thicknessCell = document.createElement("td");
+  var thicknessInput = document.createElement("input");
+  thicknessInput.type = "text";
+  thicknessInput.name = "thickness"; // Assign a unique name if needed
+  thicknessInput.placeholder = "Enter Thickness";
+  thicknessCell.appendChild(thicknessInput);
+  thicknessCell.innerHTML += " mm";
+
+  // Create table data for result dropdown
+  var resultCell = document.createElement("td");
+  var resultSelect = document.createElement("select");
+  resultSelect.name = "result"; // Assign a unique name if needed
+
+  // Add options to the result dropdown
+  var resultOptions = ["OK", "Not OK"];
+  for (var j = 0; j < resultOptions.length; j++) {
+    var resultOption = document.createElement("option");
+    resultOption.value = resultOptions[j];
+    resultOption.text = resultOptions[j];
+    resultSelect.appendChild(resultOption);
+  }
+
+  resultCell.appendChild(resultSelect);
+
+  // Create table data for remark input
+  var remarkCell = document.createElement("td");
+  var remarkInput = document.createElement("input");
+  remarkInput.type = "text";
+  remarkInput.name = "remark"; // Assign a unique name if needed
+  remarkInput.placeholder = "Enter Remark";
+  remarkCell.appendChild(remarkInput);
+
+  // Append cells to the new row
+  newRow.appendChild(materialCell);
+  newRow.appendChild(thicknessCell);
+  newRow.appendChild(resultCell);
+  newRow.appendChild(remarkCell);
+
+  // Append the new row to the thickness table body
+  thicknessTableBody.appendChild(newRow);
+}
+
+let pdfGenerated = false; // Variable to track if PDF has been generated
+
+// Function to handle form submission
+function submitForm(event) {
+    event.preventDefault();
+
+    // Hide placeholders when the submit button is clicked
+    hidePlaceholders();
+
+    // Check if the PDF has already been generated
+    if (pdfGenerated) {
+        alert("PDF has already been generated. Please proceed to the next step.");
+        return;
+    }
+
+    // Collect form data (you can use FormData or any method you prefer)
+    let formData = new FormData(document.getElementById('report-form'));
+// Validate the number of working days
+let startDate = new Date(formData.get('Start-date'));
+let endDate = new Date(formData.get('End-date'));
+let totalDays = Math.ceil((endDate - startDate) / (24 * 60 * 60 * 1000)) + 1; // Calculate total days
+let numberOfDays = formData.get('no-of-days');
+
+// Check if numberOfDays contains only digits
+if (!/^\d+$/.test(numberOfDays)) {
+alert("Number of working days must be a positive integer. Please enter a valid number.");
+return;
+}
+
+numberOfDays = parseInt(numberOfDays, 10);
+
+if (isNaN(numberOfDays) || numberOfDays <= 0 || numberOfDays > totalDays) {
+alert("Number of working days is invalid. Please make sure it is a positive number and not greater than the total days between the selected start and end dates.");
+return;
+}
+
+
+    // Display a confirmation dialog
+    if (confirm("Are you sure you want to submit the form?")) {
+        // Example: Sending form data via fetch to a Google Apps Script
+        fetch('https://script.google.com/macros/s/AKfycbw7b-_js6MJRHqf15y5sAdLgMM7fHSl3s4xMEqMEBm9zoAW1pX-tMtsdNjcpE4DQ6K-GA/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+    .then(tokenNumber => {
+        // Include the token number in your PDF
+let words = tokenNumber.split(',');
+let firstWord = words[0];
+let lastWord = words[words.length - 1];
+        console.log('Token Number:', firstWord);
+        document.getElementById('token-number').innerText=firstWord;
+        // After the form submission logic, initiate the print
+        window.print();
+        pdfGenerated = true;
+  // Reset the form after successful submission
+  document.getElementById('report-form').reset();
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+            });
+    }
+    // Function to reset the form
+function resetForm() {
+document.getElementById('report-form').reset();
+}
+}
+
+function updateNumberOfDays() {
+    var startDate = new Date(document.getElementById("Start-date").value);
+    var endDate = new Date(document.getElementById("End-date").value);
+
+    // Calculate the difference in days
+    var totalDays = Math.ceil((endDate - startDate) / (24 * 60 * 60 * 1000)) + 1;
+
+    // Update the input field for the total days
+    document.getElementById("total-days").value = totalDays;
+
+    // Calculate the number of working days (excluding weekends)
+    var workingDays = 0;
+    var currentDate = startDate;
+
+    while (currentDate <= endDate) {
+        var dayOfWeek = currentDate.getDay();
+        if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+            // Count only weekdays (Monday to Friday)
+            workingDays++;
+        }
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    // Update the input field for the number of working days
+    document.getElementById("no-of-days").value = workingDays;
+}
+
+// Add an event listener to update the number of working days when the dates change
+document.getElementById("Start-date").addEventListener("change", updateNumberOfDays);
+document.getElementById("End-date").addEventListener("change", updateNumberOfDays);
+
+// Function to hide placeholders
+function hidePlaceholders() {
+    var inputs = document.querySelectorAll("input[type=text]");
+    inputs.forEach(function (input) {
+        input.removeAttribute("placeholder");
+    });
+}
+
+function addOtherRow() {
+// Get the table where new rows will be added
+var otherTable = document.getElementById("other-table");
+
+// Create a new table row
+var newRow = document.createElement("tr");
+
+// Create table data for description input
+var descriptionCell = document.createElement("td");
+var descriptionInput = document.createElement("input");
+descriptionInput.type = "text";
+descriptionInput.name = "description"; // Assign a unique name if needed
+descriptionInput.placeholder = "Enter Description";
+descriptionCell.appendChild(descriptionInput);
+
+// Create table data for remark input
+var remarkCell = document.createElement("td");
+var remarkInput = document.createElement("input");
+remarkInput.type = "text";
+remarkInput.name = "remark"; // Assign a unique name if needed
+remarkInput.placeholder = "Enter Remark";
+remarkCell.appendChild(remarkInput);
+
+// Append cells to the new row
+newRow.appendChild(descriptionCell);
+newRow.appendChild(remarkCell);
+
+// Append the new row to the table
+otherTable.appendChild(newRow);
+}
+
+      // Function to handle form submission
+      document.getElementById('myForm').addEventListener('submit', function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+        
+        // Perform any form processing if needed
   
-//   function addRow() {
-//   // Get the table body where new rows will be added
-//   var tableBody = document.getElementById("thickness-table-body");
-
-//   // Create a new table row
-//   var newRow = document.createElement("tr");
-
-//   // Create table data for material select
-//   var materialCell = document.createElement("td");
-//   var materialSelect = document.createElement("select");
-//   materialSelect.name = "material"; // Update this to assign a unique name if needed
-
-//   // Add options to the material select
-//   var materials = ["MS", "Steel", "Aluminum"]; // Add more materials as needed
-//   materials.forEach(function(material) {
-//     var option = document.createElement("option");
-//     option.value = material;
-//     option.text = material;
-//     materialSelect.appendChild(option);
-//   });
-
-//   // Append material select to table cell
-//   materialCell.appendChild(materialSelect);
-
-//   // Create table data for thickness input
-//   var thicknessCell = document.createElement("td");
-//   var thicknessInput = document.createElement("input");
-//   thicknessInput.type = "text";
-//   thicknessInput.name = "thickness"; // Update this to assign a unique name if needed
-//   thicknessInput.placeholder = "Enter Thickness";
-//   var unit = document.createTextNode(" mm");
-//   thicknessCell.appendChild(thicknessInput);
-//   thicknessCell.appendChild(unit);
-
-//   // Create table data for result select
-//   var resultCell = document.createElement("td");
-//   var resultSelect = document.createElement("select");
-//   resultSelect.name = "result"; // Update this to assign a unique name if needed
-
-//   // Add options to the result select
-//   var results = ["OK", "Not OK"]; // Add more results as needed
-//   results.forEach(function(result) {
-//     var option = document.createElement("option");
-//     option.value = result;
-//     option.text = result;
-//     resultSelect.appendChild(option);
-//   });
-
-//   // Append result select to table cell
-//   resultCell.appendChild(resultSelect);
-
-//   // Create table data for remark input
-//   var remarkCell = document.createElement("td");
-//   var remarkInput = document.createElement("input");
-//   remarkInput.type = "text";
-//   remarkInput.name = "remark"; // Update this to assign a unique name if needed
-//   remarkInput.placeholder = "Enter Remark";
-//   remarkCell.appendChild(remarkInput);
-
-//   // Append all cells to the new row
-//   newRow.appendChild(materialCell);
-//   newRow.appendChild(thicknessCell);
-//   newRow.appendChild(resultCell);
-//   newRow.appendChild(remarkCell);
-
-//   // Append the new row to the table body
-//   tableBody.appendChild(newRow);
-// }
-// // Function to handle form submission and print
-// function handleFormSubmission(event) {
-//   event.preventDefault();
-
-//   // Your code for form submission goes here
-//   // For example, you can use AJAX to send form data to the specified endpoint
-
-//   // After successful submission, trigger printing
-//   window.print();
-// }
-
-// // Listen for the form submission
-// document.getElementById('report-form').addEventListener('submit', handleFormSubmission);
-
-
-
-
-//   document.getElementById('AddCity').addEventListener('input', function(event) {
-//     let cityInput = event.target;
-//     let city = cityInput.value;// city name condition
-//     if (city.charAt(0) !== city.charAt(0).toUpperCase()) {
-//       cityInput.value = city.charAt(0).toUpperCase() + city.slice(1);
-//     }
-//   });
-
-//   function validateCity() {
-//       let cityInput = document.getElementById('Add City').value;
-//       if (cityInput.charAt(0) !== cityInput.charAt(0).toUpperCase()) {
-//           alert('City name should start with a capital letter');
-//           return false; // Prevent form submission
-//       }
-//       return true; // Continue with form submission
-//   }
+        // Redirect to the dashboard
+        window.location.href = './select.html';
+      });
+  
+      function goToDashboard() {
+    // Display a confirmation dialog
+    if (confirm("Are you sure you want to go to the dashboard?")) {
+      // If the user confirms, redirect to the dashboard
+      window.location.href = './select.html';
+    }
+  }
+  

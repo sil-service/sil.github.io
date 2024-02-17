@@ -170,3 +170,13 @@ th {
     display: none;
   }
 }
+@media print {
+  #addOtherButton {
+    display: none;
+  }
+}
+@media print {
+  #add-thickness-button {
+    display: none;
+  }
+}
