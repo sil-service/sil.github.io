@@ -156,14 +156,33 @@ document.getElementById('selectedProblems').value = temp.join(',');
 }
 
     
-        document.getElementById('EmpID').addEventListener('input', function() {
-    var empId = this.value;
-    fetch('https://script.google.com/macros/s/AKfycbz22oMHNJRDu-wE3UPTXzyXsyg6WlZJGehuR2fVs5Ub7dpzFEQ9X_f0tNTDgkc5ytuoLA/exec?empId=' + empId)
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('Engineer Name').value = data.engineer_Name;
-    })
-    .catch(error => console.error('Error:', error));
-});
+//         document.getElementById('EmpID').addEventListener('blur', function() {
+//     var empId = this.value;
+//     fetch('https://script.google.com/macros/s/AKfycbz22oMHNJRDu-wE3UPTXzyXsyg6WlZJGehuR2fVs5Ub7dpzFEQ9X_f0tNTDgkc5ytuoLA/exec?empId=' + empId)
+//     .then(response => response.json())
+//     .then(data => {
+//         document.getElementById('Engineer Name').value = data.engineer_Name;
+//     })
+//     .catch(error => console.error(' ', error));
+// });
 
    
+
+// FETCH FIRST AND LAST NAME
+document.getElementById('EmpID').addEventListener('blur', function() {
+  var empId = this.value;
+  fetch('https://script.google.com/macros/s/AKfycbz22oMHNJRDu-wE3UPTXzyXsyg6WlZJGehuR2fVs5Ub7dpzFEQ9X_f0tNTDgkc5ytuoLA/exec?empId=' + empId)
+  .then(response => response.json())
+  .then(data => {
+  if (data.engineer_Name) {
+  document.getElementById('Engineer Name').value = data.engineer_Name;
+  } else {
+  // Display error message
+  alert('First name and last name not found for employee ID ' + empId);
+  // Clear the input field
+  document.getElementById('Engineer Name').value = '';
+  }
+  })
+  .catch(error => console.error('Error:', error));
+  });
+  
