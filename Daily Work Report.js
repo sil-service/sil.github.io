@@ -3,7 +3,8 @@ document.getElementById('submitButton').addEventListener('click', function (even
     if (!confirm('Are you sure you want to submit?')) {
         event.preventDefault(); // Prevent the default submit action if the user declines
     }
-    document.getElementById('form-group').reset();
+    //document.getElementById('form-group').relo();
+    window.location.reload();
 
 });
 
@@ -42,7 +43,7 @@ document.getElementById('Working-Hours').value = hours + ' hours ' + minutes + '
 });
 
 // FETCH FIRST AND LAST NAME
-document.getElementById('EmpID').addEventListener('input', function() {
+document.getElementById('EmpID').addEventListener('blur', function() {
 var empId = this.value;
 fetch('https://script.google.com/macros/s/AKfycbz22oMHNJRDu-wE3UPTXzyXsyg6WlZJGehuR2fVs5Ub7dpzFEQ9X_f0tNTDgkc5ytuoLA/exec?empId=' + empId)
 .then(response => response.json())
