@@ -125,7 +125,7 @@ if (formClone) {
     let companyName = document.createElement('h1');
     companyName.textContent = 'Suresh Indu Lasers Private Limited';
     companyName.style.fontWeight = 'bold';
-    companyName.style.fontFamily = 'Algerian, sans-serif';
+    companyName.style.fontFamily = 'Times New Roman, sans-serif';
     companyName.style.color = 'red';
 
     // Create and style the company address element
@@ -136,8 +136,8 @@ if (formClone) {
 
     // Create and style the heading element
     let heading = document.createElement('h1');
-    companyAddress.style.fontFamily = 'Times New Roman, sans-serif';
-    heading.textContent = 'Machine Installation/Commissioning Report';
+        heading.textContent = 'Machine Installation/Commissioning Report';
+        heading.style.fontFamily = 'Times New Roman, sans-serif';
 
     // Append the company name and address elements before the heading in formClone
     formClone.insertBefore(heading, formClone.firstChild);
