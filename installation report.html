@@ -32,37 +32,15 @@
            <table>
       <tr>
         <td><label for="customer-name"> Customer Name*:</label></td>
-        <td><input type="text" placeholder="Enter Customer Name*" id="customer-name" name="customer-name" required required size="60" ></td>
+        <td><input type="text" placeholder="Enter Customer Name*" id="customer-name" name="customer-name" required required size="40" ></td>
         <td><label for="contact-person">Contact Person*:</label></td>
-        <td><input type="text" placeholder="Enter Contact Person*" id="contact-person" name="contact-person" required required size="60"></td>
+        <td><input type="text" placeholder="Enter Contact Person*" id="contact-person" name="contact-person" required required size="40"></td>
       </tr>
       <tr>
-        <!-- <tr>              
-          <td colspan="2"><label for="Engineer-Name">Engineer Name*:</label></td>
-          <td colspan="2"><input type="text" placeholder="Enter Engineer Name*" id="Engineer-Name" name="Engineer-Name" required required size="100"></td>
-        </tr>
-          <tr>
-          <td colspan="2"><label for="City-Name">Address*:</label></td>
-          <td colspan="2"><input type="text" placeholder="Enter City Name*" id="City-Name" name="City-Name" required required size="150"></td>
-        </tr> -->
-        <tr>              
-          <td colspan="4"><label for="Engineer-Name">Engineer Name*:
-          <input type="text" placeholder="Enter Engineer Name*" id="Engineer-Name" name="Engineer-Name" required required size="100"></td>
-        </tr>
-          <!-- <tr>
-          <td colspan="4"><label for="City-Name">Address*:
-          <input type="text" placeholder="Enter Company  Address*" id="City-Name" name="City-Name" required required size="150"></td>
-        </tr> -->
-        <tr>
-          <td colspan="4">
-              <label for="City-Name">Address*:</label><br>
-              <textarea id="City-Name" name="City-Name" placeholder="Enter Company Address*" required rows="2" style="width: 100%;"></textarea>
-          </td>
-      </tr>
         <td><label for="Start-date">Start Date*:</label></td>
-        <td><input type="date" id="Start-date" name="Start-date" required required size="20"></td>
+        <td><input type="date" id="Start-date" name="Start-date" required required size="40"></td>
         <td><label for="End-date">End Date*:</label></td>
-        <td><input type="date" id="End-date" name="End-date" required required size="20"></td>
+        <td><input type="date" id="End-date" name="End-date" required required size="40"></td>
       </tr>
       <!-- Add this code within the <form> element, after the End Date input -->
       <tr>
@@ -70,7 +48,12 @@
         <td><input type="text" placeholder="Enter Number of Working Days*" id="no-of-days" name="no-of-days" pattern="[0-9]*" required ></td>
       </tr>
 
-      
+      <tr>              
+        <td><label for="Engineer-Name">Engineer Name*:</label></td>
+        <td><input type="text" placeholder="Enter Engineer Name*" id="Engineer-Name" name="Engineer-Name" required required size="30"></td>
+        <td><label for="City-Name">City Name*:</label></td>
+        <td><input type="text" placeholder="Enter City Name*" id="City-Name" name="City-Name" required required size="40"></td>
+      </tr>
       <tr>
         <td><label for="machine-model">Machine Model*:</label></td>
         <td><input type="text" placeholder="Enter Machine-Model*" id="machine-model" name="machine-model" required required size="40"></td>
@@ -107,7 +90,44 @@
     <br>
   </div>
   <div class="report-table">
-    
+    <table id="thickness-table">
+      <thead>
+        <tr>
+          <th>Cutting Material</th>
+          <th>Thickness (mm)</th>
+          <th>Result</th>
+          <th>Remark</th>
+        </tr>
+      </thead>
+      <tbody id="thickness-table-body">
+        <!-- Default row without trials column -->
+        <tr>
+          <td>
+            <select name="material">
+              <option value="Mild Steel">Mild Steel</option>
+              <option value="stainless Steel">Stainless Steel</option>
+              <option value="Aluminum">Aluminum</option>                
+              <option value="Titanium">Titanium</option>
+              <option value="Galvanized">Galvanized</option>
+              <option value="Copper">Copper</option>
+              <option value="Brass">Brass</option>
+              <!-- Add more options as needed -->
+            </select>
+          </td>
+          <td><input type="text" name="thickness-1" placeholder="Enter Thickness"> mm</td>
+          <td>
+            <select name="result-1">
+              <option value="OK">OK</option>
+              <option value="Not OK">Not OK</option>
+              <!-- Add more options as needed -->
+            </select>
+          </td>
+          <td><input type="text" name="remark-1" placeholder="Enter Remark"></td>
+        </tr>
+      </tbody>
+    </table><br>
+    <button type="button" onclick="addRow()" id="add-thickness-button" class="add-buttons">Add Thickness</button>
+      </table>
 
   </div>
       <table>
@@ -336,39 +356,6 @@
   <!-- ... (other rows) ... -->
   
 </table><br>
-
-<table id="thickness-table">
-  <thead>
-    <tr>
-      <th>Cutting Material</th>
-      <th>Thickness (mm)</th>
-      <th>Result</th>
-      <th>Remark</th>
-    </tr>
-  </thead>
-  <tbody id="thickness-table-body">
-    <!-- Default row without trials column -->
-    <tr>
-      <td>
-        <select name="material">
-          
-        </select>
-      </td>
-      <td><input type="text" name="thickness-1" placeholder="Enter Thickness"> </td>
-      <td>
-        <select name="result-1">
-          <option value="OK">OK</option>
-          <option value="Not OK">Not OK</option>
-          <!-- Add more options as needed -->
-        </select>
-      </td>
-      <td><input type="text" name="remark-1" placeholder="Enter Remark"></td>
-    </tr>
-  </tbody>
-</table><br>
-<button type="button" onclick="addRow()" id="add-thickness-button" class="add-buttons">Add Thickness</button>
-  </table><br><br>
-
 <button type="button" onclick="addOtherRow()" style="padding: 10px 20px; background-color: #3498db; color: #fff; border: none; border-radius: 5px; cursor: pointer;" id="addOtherButton" class="add-buttons-hidden">Add Other</button>
 
 
