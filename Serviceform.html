@@ -6,6 +6,7 @@
     <title>Services Engineer Page</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/compressorjs@1.0.5/dist/compressor.min.js"></script>
 
     <style>
             #preview {
@@ -24,7 +25,8 @@
             <img src="./sil.png" alt="Company Logo">
         </header>
         <Center><h2>Services Report</h2></Center>
-       <form method="POST" action="https://script.google.com/macros/s/AKfycbw4S6kYwf0cC6zpYgtY1BRWUb1cPcoetwSvJqICl_CYb2NiHkCd-xRl1oEhsBVhiIvlwA/exec">
+        
+                 <form method="POST" action="https://script.google.com/macros/s/AKfycbw8zXxN1KCbtEQC513WLDklNadX1-dHajok_NMhXgoRZ_KH6LTbyiEc2XeevQxSirPN9g/exec">  
                 <div class="form-group">
                     <label for="EmpID">Emp ID<span class="mandatory"></span>:</label>
                     <input type="text" id="EmpID" name="EmpID" pattern="[0-9]+" title="Please enter only numbers" required>
@@ -49,6 +51,7 @@
                     <option value="Ecat sheet Cutting">Ecat sheet Cutting</option>
                     <option value="Backhoff sheet Cutting">Backhoff sheet Cutting</option>
                     <option value="Fanuc sheet Cutting">Fanuc sheet Cutting</option>
+                    <option value="FS Cut">FS Cut</option>
                     <option value="3 Chuck tube Cutting">3 Chuck tube Cutting</option>
                     <option value="2 Chuck tube Cutting">2 Chuck tube Cutting</option>
                     <option value="Sheet + Tube Cutting Machine">Sheet + Tube Cutting Machine</option>
@@ -138,8 +141,25 @@
             <option value="On Hold">On Hold</option>
             <option value="Cancelled">Cancelled</option>
         </select>
+        
         <input type="hidden" id="Token Number" name="Token Number">
     </div>
+    <div class="form-group">
+        <label for="SpareParts">Spare Parts<span class="mandatory"></span>:</label>
+        <textarea id="SpareParts" name="SpareParts" rows="6" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="SparePartStatus">Spare Part status<span class="mandatory"></span>:</label>
+        <select id="SparePartStatus" name="SparePartStatus" required>
+            <option value="">Select Status</option>
+            <option value="FOCs">FOC</option>
+            <option value="Settlement">Settlement</option>
+            <option value="Chargeble">Chargeble</option>
+            <option value="Returnable">Returnable</option>
+            <option value="Other">Other</option>
+            <option value="--NA--">--NA--</option>
+        </select>
+     </div>
     <div class="form-group">
         <label for="Customer Feedback">Customer Feedback:</label>
         <textarea id="Customer Feedback" name="Customer Feedback" rows="7" ></textarea>
@@ -149,14 +169,6 @@
         <textarea id="Customer Name Seal & Sign" name="Customer Name Seal & Sign" rows="4" ></textarea>
         
     </div>
-    
-    
-<!-- / -->
-<!-- This is an image element with an empty src and alt attribute -->
-<!-- <img src="" alt=""> -->
-<!-- This is a script tag, which contains JavaScript code -->
-
-<!-- <input type="file" id="imageUpload" onchange="previewImage(event)" accept="image/*"> -->
 <label for="customerSealSign">Customer Name Seal & Sign:</label>
 
 <input type="file" id="imageUpload" onchange="previewImage(event)" accept="image/*" capture="camera">
