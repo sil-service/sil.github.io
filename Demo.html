@@ -240,7 +240,7 @@ document.getElementById('searchBtn').addEventListener('click', function () {
 
 
 async function fetchTransactionsByEmployee(employeeId, startDate, endDate) {
-    let url = `https://114.143.65.90:8433/api/CDTransactions/TransactionHistory/${employeeId}`;
+    let url = `https://https://114.143.65.90:8433/api/CDTransactions/TransactionHistory/${employeeId}`;
     if (startDate && endDate) {
         url += `?startDate=${startDate}&endDate=${endDate}`;
     }
@@ -263,7 +263,7 @@ document.getElementById('filterButton').addEventListener('click', function () {
 
 
 async function fetchTransactionsByEmployee(employeeId, startDate, endDate) {
-    let url = `https://114.143.65.90:8433/api/CDTransactions/TransactionHistory/${employeeId}`;
+    let url = `https://https://114.143.65.90:8433/api/CDTransactions/TransactionHistory/${employeeId}`;
     if (startDate && endDate) {
         url += `?startDate=${startDate}&endDate=${endDate}`;
     }
@@ -294,7 +294,7 @@ document.getElementById('setCreditButton').addEventListener('click', async funct
     };
 
     // Send a POST request to your API endpoint
-    fetch('https://114.143.65.90:8433/api/CDTransactions/AddTransaction', {
+    fetch('https://https://114.143.65.90:8433/api/CDTransactions/AddTransaction', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
