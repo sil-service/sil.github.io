@@ -85,10 +85,16 @@
         <img src="./dailyreport.png" alt="Admin Icon">
         <span>Daily Work Report</span>
       </a>
-           <a href="./Serviceform.html">
+   <!-- <a href="./Serviceform.html">
         <img src="./service.png" alt="Service Engineer Icon">
         <span>Service Report</span>
-      </a>
+      </a> 
+     -->
+     <a id="serviceLink" href="./Serviceform.html">
+      <img src="./service.png" alt="Service Engineer Icon">
+      <span>Service Report</span>
+    </a>
+    
       <a href="./installation report.html">
         <img src="./install.jpg" alt="Admin Icon">
         <span>Installation Report</span>
@@ -118,7 +124,27 @@ console.log('Employee ID:', employeeId);
   var debitLink = document.getElementById("debitLink");
   debitLink.href += "?empId=" + employeeId;
 // Check if employeeId is already stored in sessionStorage
+ // Update the service link with the empId
+ 
+  </script>
+  <script>
+    window.onload = function() {
+    // Get the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
 
+    // Get the value of the employeeId parameter
+    const employeeId = urlParams.get('employeeId');
+
+    // Use the employeeId value
+    console.log('Employee ID:', employeeId);
+
+    // Check if employeeId is present
+    if (employeeId) {
+        // Update the service link with the employeeId
+        var serviceLink = document.getElementById("serviceLink");
+        serviceLink.href += "?employeeId=" + employeeId;
+    }
+};
   </script>
 </body>
 </html>
