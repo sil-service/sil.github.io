@@ -15,7 +15,7 @@ document.getElementById('machineForm').addEventListener('submit', function(event
       .join('&');
   
     // Send data to Google Apps Script
-    fetch('https://script.google.com/macros/s/AKfycbyPa-iIz-y87vvm0z52dfeqIO1Tg1dSCigay6tlRwwevFF5ILM9GHZoDQn62KM3javlIw/exec                                                                                                     ', {
+    fetch('https://script.google.com/macros/s/AKfycbwj-z_AjlKh1mZJNq62QEB1Pg84lhoKcc7pNKnKwx_9nMOgXCno_6bxj8N-VFsT61Kwaw/exec                                                                                                     ', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
