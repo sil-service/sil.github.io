@@ -157,7 +157,7 @@ let temp = [];
 Object.values(selectedAreaProblems).forEach(problems => {
 temp = temp.concat(problems);
 });
-
+    
 // Join selected problems with commas directly
 document.getElementById('selectedProblems').value = temp.join(',');
 }
@@ -302,154 +302,78 @@ function toUpperCaseInput(event) {
   fetchCompanies(event.target.value);
 }
 
-  // function fetchCompanies(searchTerm) {
-  //   var xhr = new XMLHttpRequest();
-  //   xhr.open('GET', 'https://script.google.com/macros/s/AKfycbyZrjBVBl7LS23H0yXDMhX-miDxtweqtfQ05ewKEUvBKcUVVcxdu-ufpMlyXqD7oa6dCA/exec?searchTerm=' + encodeURIComponent(searchTerm), true);
-  //   xhr.onload = function() {
-  //     if (xhr.status === 200) {
-  //       var companies = JSON.parse(xhr.responseText);
-  //       companies.push('OTHERS'); // Add "OTHERS" option
-  //       updateDropdown(companies, 'companyDropdown', 'CompanyName');
-  //     }
-  //   };
-  //   xhr.send();
-  // }
-  
-  // function updateDropdown(items, dropdownId, inputId) {
-  //   var dropdown = document.getElementById(dropdownId);
-  //   var errorDiv = document.getElementById('companyError');
-  //   dropdown.innerHTML = '';
-  
-  //   if (items.length > 0) {
-  //     dropdown.style.display = 'block';
-  //     errorDiv.style.display = 'none';
-  
-  //     items.forEach(function(item) {
-  //       var displayText = (typeof item === 'object') ? item.serialNumber : item;
-  
-  //       var div = document.createElement('div');
-  //       div.classList.add('dropdown-item');
-  //       div.textContent = displayText;
-  //       div.onclick = function() {
-  //         document.getElementById(inputId).value = displayText;
-  //         dropdown.style.display = 'none';
-  //         if (inputId === 'CompanyName') {
-  //           if (displayText === 'OTHERS') {
-  //             enableEditing();
-  //           } else {
-  //             disableEditing();
-  //             fetchMachineDetails(displayText);
-  //           }
-  //         } else if (inputId === 'MachineSerialNumber') {
-  //           fetchAddress(displayText);
-  //         }
-  //       };
-  //       dropdown.appendChild(div);
-  //     });
-  //   } else {
-  //     dropdown.style.display = 'none';
-  //     errorDiv.style.display = 'block';
-  //   }
-  // }
-  
-  // function enableEditing() {
-  //   document.getElementById('OtherCompanyNameGroup').style.display = 'block';
-  //   document.getElementById('MachineSerialNumber').removeAttribute('readonly');
-  //   document.getElementById('CompanyAddress').removeAttribute('readonly');
-  //   document.getElementById('LaserPower').removeAttribute('readonly'); // Make LaserPower editable
-  //   document.getElementById('MachineSerialNumber').value = '';
-  //   document.getElementById('CompanyAddress').value = '';
-  //   document.getElementById('LaserPower').value = ''; // Clear LaserPower field
-  // }
-  
-  // function disableEditing() {
-  //   document.getElementById('OtherCompanyNameGroup').style.display = 'none';
-  //   document.getElementById('MachineSerialNumber').setAttribute('readonly', true);
-  //   document.getElementById('CompanyAddress').setAttribute('readonly', true);
-  //   // document.getElementById('LaserPower').setAttribute('readonly', true); // Make LaserPower read-only
-  // }
-  
-  // function fetchMachineDetails(companyName) {
-  //   var xhr = new XMLHttpRequest();
-  //   xhr.open('GET', 'https://script.google.com/macros/s/AKfycbyZrjBVBl7LS23H0yXDMhX-miDxtweqtfQ05ewKEUvBKcUVVcxdu-ufpMlyXqD7oa6dCA/exec?companyName=' + encodeURIComponent(companyName), true);
-  //   xhr.onload = function() {
-  //     if (xhr.status === 200) {
-  //       var machineDetails = JSON.parse(xhr.responseText);
-  //       if (machineDetails.length === 1) {
-  //         // Auto-select if only one machine serial number is available
-  //         document.getElementById('MachineSerialNumber').value = machineDetails[0].serialNumber;
-  //         fetchAddress(machineDetails[0].serialNumber);
-  //         document.getElementById('machineDropdown').style.display = 'none';
-  //       } else {
-  //         updateDropdown(machineDetails, 'machineDropdown', 'MachineSerialNumber');
-  //       }
-  //     } else {
-  //       console.error('Failed to fetch machine details:', xhr.statusText);
-  //     }
-  //   };
-  //   xhr.onerror = function() {
-  //     console.error('Request failed');
-  //   };
-  //   xhr.send();
-  // }
-  
-  // function fetchAddress(machineSerialNumber) {
-  //   var xhr = new XMLHttpRequest();
-  //   xhr.open('GET', 'https://script.google.com/macros/s/AKfycbyZrjBVBl7LS23H0yXDMhX-miDxtweqtfQ05ewKEUvBKcUVVcxdu-ufpMlyXqD7oa6dCA/exec?machineSerialNumber=' + encodeURIComponent(machineSerialNumber), true);
-  //   xhr.onload = function() {
-  //     if (xhr.status === 200) {
-  //       var addressDetails = JSON.parse(xhr.responseText);
-  //       document.getElementById('CompanyAddress').value = addressDetails.address;
-  //       document.getElementById('LaserPower').value = addressDetails.laserPower; // Populate the Laser Power field
-  //        document.getElementById('LaserPower').removeAttribute('readonly'); // Ensure LaserPower remains editable
-    
-  //     } else {
-  //       console.error('Failed to fetch address:', xhr.statusText);
-  //     }
-  //   };
-  //   xhr.onerror = function() {
-  //     console.error('Request failed');
-  //   };
-  //   xhr.send();
-  // }
-  
-  // document.addEventListener('click', function(event) {
-  //   var companyDropdown = document.getElementById('companyDropdown');
-  //   var machineDropdown = document.getElementById('machineDropdown');
-    
-  //   if (!companyDropdown.contains(event.target) && event.target.id !== 'CompanyName') {
-  //     companyDropdown.style.display = 'none';
-  //   }
-    
-  //   if (!machineDropdown.contains(event.target) && event.target.id !== 'MachineSerialNumber') {
-  //     machineDropdown.style.display = 'none';
-  //   }
   // });
-  
-  // document.getElementById('CompanyName').addEventListener('focus', function() {
-  //   var dropdown = document.getElementById('companyDropdown');
-  //   if (dropdown.children.length > 0) {
-  //     dropdown.style.display = 'block';
-  //   }
-  // });
-  
-  // document.getElementById('MachineSerialNumber').addEventListener('focus', function() {
-  //   var dropdown = document.getElementById('machineDropdown');
-  //   if (dropdown.children.length > 0) {
-  //     dropdown.style.display = 'block';
-  //   }
-  // });
-  function fetchCompanies(searchTerm) {
+//   function fetchCompanies(searchTerm) {
+//     var xhr = new XMLHttpRequest();
+//     xhr.open('GET', 'https://script.google.com/macros/s/AKfycbyZrjBVBl7LS23H0yXDMhX-miDxtweqtfQ05ewKEUvBKcUVVcxdu-ufpMlyXqD7oa6dCA/exec?searchTerm=' + encodeURIComponent(searchTerm), true);
+//     xhr.onload = function() {
+//         if (xhr.status === 200) {
+//             var companies = JSON.parse(xhr.responseText);
+//             companies.push('OTHERS'); // Add "OTHERS" option
+//             updateDropdown(companies, 'companyDropdown', 'CompanyName');
+//         }
+//     };
+//     xhr.send();
+// }
+
+// function updateDropdown(items, dropdownId, inputId) {
+//     var dropdown = document.getElementById(dropdownId);
+//     var errorDiv = document.getElementById('companyError');
+//     dropdown.innerHTML = '';
+
+//     if (items.length > 0) {
+//         dropdown.style.display = 'block';
+//         errorDiv.style.display = 'none';
+
+//         items.forEach(function(item) {
+//             var displayText = (typeof item === 'object') ? item.serialNumber : item;
+
+//             var div = document.createElement('div');
+//             div.classList.add('dropdown-item');
+//             div.textContent = displayText;
+//             div.onclick = function() {
+//                 document.getElementById(inputId).value = displayText;
+//                 dropdown.style.display = 'none';
+//                 if (inputId === 'CompanyName') {
+//                     if (displayText === 'OTHERS') {
+//                         enableEditing();
+//                     } else {
+//                         disableEditing();
+//                         fetchMachineDetails(displayText);
+//                     }
+//                 } else if (inputId === 'MachineSerialNumber') {
+//                     fetchAddress(displayText);
+//                 }
+//             };
+//             dropdown.appendChild(div);
+//         });
+//     } else {
+//         dropdown.style.display = 'none';
+//         errorDiv.style.display = 'block';
+//     }
+// }
+function fetchCompanies(searchTerm) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://script.google.com/macros/s/AKfycbyZrjBVBl7LS23H0yXDMhX-miDxtweqtfQ05ewKEUvBKcUVVcxdu-ufpMlyXqD7oa6dCA/exec?searchTerm=' + encodeURIComponent(searchTerm), true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             var companies = JSON.parse(xhr.responseText);
-            companies.push('OTHERS'); // Add "OTHERS" option
-            updateDropdown(companies, 'companyDropdown', 'CompanyName');
+            if (companies.length === 0) {
+                // Show error message and suggest "OTHERS" option
+                showError('No matching companies found. Please select "OTHERS" to add a new company.');
+            } else {
+                companies.push('OTHERS'); // Add "OTHERS" option
+                updateDropdown(companies, 'companyDropdown', 'CompanyName');
+            }
         }
     };
     xhr.send();
+}
+
+function showError(message) {
+    var errorDiv = document.getElementById('companyError');
+    errorDiv.textContent = message;
+    errorDiv.style.display = 'block'; // Display the error message
 }
 
 function updateDropdown(items, dropdownId, inputId) {
@@ -459,7 +383,7 @@ function updateDropdown(items, dropdownId, inputId) {
 
     if (items.length > 0) {
         dropdown.style.display = 'block';
-        errorDiv.style.display = 'none';
+        errorDiv.style.display = 'none'; // Hide the error message if items are available
 
         items.forEach(function(item) {
             var displayText = (typeof item === 'object') ? item.serialNumber : item;
@@ -470,6 +394,8 @@ function updateDropdown(items, dropdownId, inputId) {
             div.onclick = function() {
                 document.getElementById(inputId).value = displayText;
                 dropdown.style.display = 'none';
+                errorDiv.style.display = 'none'; // Hide error when a selection is made
+
                 if (inputId === 'CompanyName') {
                     if (displayText === 'OTHERS') {
                         enableEditing();
@@ -485,9 +411,12 @@ function updateDropdown(items, dropdownId, inputId) {
         });
     } else {
         dropdown.style.display = 'none';
-        errorDiv.style.display = 'block';
+        errorDiv.style.display = 'block'; // Show error if no items are found
     }
 }
+
+// Rest of your functions remain unchanged...
+
 function enableEditing() {
   document.getElementById('OtherCompanyNameGroup').style.display = 'block';
   document.getElementById('MachineSerialNumber').removeAttribute('readonly');
